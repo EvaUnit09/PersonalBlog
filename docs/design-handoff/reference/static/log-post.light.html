@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Noah Decaille: Log post</title>
+
+</head>
+<body>
+
+
+
+
+<style>
+@font-face{font-family:'Archivo';font-weight:400;src:url('../../fonts/archivo-latin-400-normal.woff2') format('woff2');}
+@font-face{font-family:'Archivo';font-weight:500;src:url('../../fonts/archivo-latin-500-normal.woff2') format('woff2');}
+@font-face{font-family:'Archivo';font-weight:600;src:url('../../fonts/archivo-latin-600-normal.woff2') format('woff2');}
+@font-face{font-family:'Archivo';font-weight:700;src:url('../../fonts/archivo-latin-700-normal.woff2') format('woff2');}
+@font-face{font-family:'Archivo';font-weight:800;src:url('../../fonts/archivo-latin-800-normal.woff2') format('woff2');}
+@font-face{font-family:'JetBrains Mono';font-weight:400;src:url('../../fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');}
+@font-face{font-family:'JetBrains Mono';font-weight:500;src:url('../../fonts/jetbrains-mono-latin-500-normal.woff2') format('woff2');}
+
+body{margin:0}
+*{box-sizing:border-box}
+a{color:var(--cy);text-decoration:none}
+a:hover{color:var(--at)}
+.sans{font-family:Archivo,"Helvetica Neue",Arial,sans-serif}
+.pn{position:relative;background:var(--bg1);padding:24px;min-width:0}
+.pn i{position:absolute;width:12px;height:12px;border:2px solid var(--ls);pointer-events:none}
+.pn i.tl{top:0;left:0;border-right:0;border-bottom:0}
+.pn i.tr{top:0;right:0;border-left:0;border-bottom:0}
+.pn i.bl{bottom:0;left:0;border-right:0;border-top:0}
+.pn i.br{bottom:0;right:0;border-left:0;border-top:0}
+.pn:hover i{border-color:var(--at)}
+.ph{display:flex;align-items:center;gap:12px;margin-bottom:20px;font-family:"JetBrains Mono",monospace;font-size:12px;line-height:16px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.ph b{font-weight:500;color:var(--at)}
+.ph .rule{flex:1;height:1px;background:var(--line)}
+.ro{font-family:"JetBrains Mono",monospace;font-size:12px;line-height:16px;letter-spacing:.04em;color:var(--if)}
+.tag{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:11px;line-height:16px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--cy)}
+.nav a{font-family:"JetBrains Mono",monospace;font-size:12px;line-height:16px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);padding:8px 0;display:inline-block;border-bottom:2px solid transparent}
+.nav a b{font-weight:500;color:var(--at)}
+.nav a:hover{border-bottom-color:var(--ac);color:var(--ink)}
+.nav a.on{border-bottom-color:var(--ac)}
+.prose p{margin:0 0 20px;font-size:17px;line-height:28px;color:var(--ink)}
+.prose h2{margin:44px 0 14px;font-weight:600;font-size:28px;line-height:34px}
+.prose h2 .ro{display:block;margin-bottom:6px;color:var(--at)}
+.prose code{font-family:"JetBrains Mono",monospace;font-size:14px;background:var(--bg2);padding:1px 6px;border-radius:2px}
+.code{margin:0 0 24px;background:var(--bg1);border:1px solid var(--line);padding:20px;font-family:"JetBrains Mono",monospace;font-size:14px;line-height:22px;color:var(--ink);overflow-x:auto;white-space:pre}
+.code .c{color:var(--if)}
+.code .k{color:var(--at)}
+.quote{margin:8px 0 28px;padding:4px 0 4px 24px;border-left:2px solid var(--ls);font-size:20px;line-height:30px;color:var(--im)}
+@media (max-width:720px){.disp{font-size:36px!important;line-height:40px!important}.pg{padding:16px!important}}
+</style>
+
+<div class="sans" style="--bg0:#fafbfc;--bg1:#ffffff;--bg2:#f0f2f4;--line:#d9dde2;--ls:#878e99;--ink:#0e1013;--im:#4f5560;--if:#5f6776;--ac:#c6ff3d;--onac:#0e1013;--at:#4a7300;--cy:#0e7490;--warn:#9a5b00;--glow:none; min-height: 1700px; background-color: var(--bg0); background-image: linear-gradient(to right, #d9dde2 1px, transparent 1px), linear-gradient(to bottom, #d9dde2 1px, transparent 1px); background-size: 24px 24px; color: var(--ink); position: relative;">
+<div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:0;background:repeating-linear-gradient(to bottom, #ffffff 0, #ffffff 1px, transparent 1px, transparent 3px);"></div>
+<div class="pg" style="position:relative;max-width:1280px;margin:0 auto;padding:24px 32px 64px;display:flex;flex-direction:column;gap:16px">
+
+<header style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:8px 0 16px;border-bottom:1px solid var(--line)">
+<a href="home.light.html" style="font-weight:800;font-size:18px;line-height:24px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)">NOAH DECAILLE</a>
+<nav class="nav" aria-label="Primary" style="display:flex;flex-wrap:wrap;gap:8px 28px">
+<a href="about.light.html"><b>01</b> / About</a>
+<a href="project-detail.light.html"><b>02</b> / Projects</a>
+<a href="home.light.html"><b>03</b> / Experience</a>
+<a href="log-post.light.html" class="on"><b>04</b> / Log</a>
+</nav>
+<div class="ro">[ <span style="color:var(--at)">DARK</span> / LIGHT ]</div>
+</header>
+
+<div style="max-width:760px;width:100%;margin:0 auto;padding-top:24px">
+
+<div class="ro" style="display:flex;flex-wrap:wrap;gap:8px 24px;padding-bottom:20px;border-bottom:1px solid var(--line)"><a href="home.light.html">◂ ALL ENTRIES</a><span>·</span><span>04 / LOG #[NN]</span><span>·</span><span>[YYYY-MM-DD]</span><span>·</span><span>[N] MIN READ</span></div>
+
+<div style="display:flex;flex-wrap:wrap;gap:8px 12px;margin:32px 0 16px"><span class="tag">[BACKEND]</span><span class="tag">[DJANGO]</span></div>
+<h1 class="disp" style="margin:0;font-weight:800;font-size:56px;line-height:56px;letter-spacing:-.01em">Splitting Django settings without losing your mind</h1>
+<p style="margin:20px 0 0;font-size:20px;line-height:30px;color:var(--im)">[Sample entry. The real one will go here: one or two sentences that say what the post covers and why it matters.]</p>
+
+<article class="prose" style="margin-top:40px">
+<p>Most Django tutorials keep everything in one <code>settings.py</code>. That works until the first deploy, when the debug flag and the database password need to differ from your laptop.</p>
+
+<h2><span class="ro">01 / THE SPLIT</span>One base, one file per environment</h2>
+<p>Keep shared defaults in a base module and override only what changes. The environment decides which module loads.</p>
+<div class="code" role="region" aria-label="Code sample" tabindex="0"><span class="c"># settings/base.py</span>
+<span class="k">from</span> pathlib <span class="k">import</span> Path
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+<span class="c"># settings/prod.py</span>
+<span class="k">from</span> .base <span class="k">import</span> *
+DEBUG = <span class="k">False</span>
+ALLOWED_HOSTS = env.list(<span class="c">"ALLOWED_HOSTS"</span>)</div>
+
+<div class="quote">[A pulled quote or the one-line takeaway of the section sits here.]</div>
+
+<h2><span class="ro">02 / SECRETS</span>Read them from the environment</h2>
+<p>[Paragraph on keeping secrets out of the repo and failing loudly when one is missing.]</p>
+<p>[Second paragraph. Posts use a 70ch measure at 17/28 so long reads stay comfortable.]</p>
+</article>
+
+<div style="display:flex;flex-wrap:wrap;gap:8px 12px;margin:40px 0 0;padding-top:20px;border-top:1px solid var(--line)"><span class="ro">TAGS</span><span class="tag">[BACKEND]</span><span class="tag">[DJANGO]</span></div>
+
+<nav aria-label="Post navigation" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:40px">
+<a class="pn" href="log-post.light.html" style="color:var(--ink)"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i><div class="ro">◂ PREVIOUS</div><div style="font-weight:600;font-size:20px;line-height:26px;margin-top:6px">[Previous post title]</div></a>
+<a class="pn" href="log-post.light.html" style="color:var(--ink);text-align:right"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i><div class="ro">NEXT ▸</div><div style="font-weight:600;font-size:20px;line-height:26px;margin-top:6px">[Next post title]</div></a>
+</nav>
+
+</div>
+
+<footer style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:16px;border-top:1px solid var(--line);margin-top:48px">
+<span class="ro">© NOAH DECAILLE · 40.7644 N / 73.9235 W</span>
+<span class="ro"><a href="about.light.html">GITHUB ▸</a> &nbsp; <a href="about.light.html">LINKEDIN ▸</a> &nbsp; <a href="about.light.html">EMAIL ▸</a></span>
+</footer>
+
+</div>
+</div>
+
+
+</body>
+</html>

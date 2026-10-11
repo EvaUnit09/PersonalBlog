@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Noah Decaille: About</title>
+
+</head>
+<body>
+
+
+
+
+<style>
+@font-face{font-family:'Archivo';font-weight:400;src:url('../../fonts/archivo-latin-400-normal.woff2') format('woff2');}
+@font-face{font-family:'Archivo';font-weight:500;src:url('../../fonts/archivo-latin-500-normal.woff2') format('woff2');}
+@font-face{font-family:'Archivo';font-weight:600;src:url('../../fonts/archivo-latin-600-normal.woff2') format('woff2');}
+@font-face{font-family:'Archivo';font-weight:700;src:url('../../fonts/archivo-latin-700-normal.woff2') format('woff2');}
+@font-face{font-family:'Archivo';font-weight:800;src:url('../../fonts/archivo-latin-800-normal.woff2') format('woff2');}
+@font-face{font-family:'JetBrains Mono';font-weight:400;src:url('../../fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');}
+@font-face{font-family:'JetBrains Mono';font-weight:500;src:url('../../fonts/jetbrains-mono-latin-500-normal.woff2') format('woff2');}
+
+body{margin:0}
+*{box-sizing:border-box}
+a{color:var(--cy);text-decoration:none}
+a:hover{color:var(--at)}
+.sans{font-family:Archivo,"Helvetica Neue",Arial,sans-serif}
+.g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.s4{grid-column:span 4}.s5{grid-column:span 5}.s7{grid-column:span 7}.s8{grid-column:span 8}.s12{grid-column:span 12}
+.pn{position:relative;background:var(--bg1);padding:24px;min-width:0}
+.pn i{position:absolute;width:12px;height:12px;border:2px solid var(--ls);pointer-events:none}
+.pn i.tl{top:0;left:0;border-right:0;border-bottom:0}
+.pn i.tr{top:0;right:0;border-left:0;border-bottom:0}
+.pn i.bl{bottom:0;left:0;border-right:0;border-top:0}
+.pn i.br{bottom:0;right:0;border-left:0;border-top:0}
+.pn:hover i{border-color:var(--at)}
+.ph{display:flex;align-items:center;gap:12px;margin-bottom:20px;font-family:"JetBrains Mono",monospace;font-size:12px;line-height:16px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.ph b{font-weight:500;color:var(--at)}
+.ph .rule{flex:1;height:1px;background:var(--line)}
+.ro{font-family:"JetBrains Mono",monospace;font-size:12px;line-height:16px;letter-spacing:.04em;color:var(--if)}
+.tag{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:11px;line-height:16px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--cy)}
+.nav a{font-family:"JetBrains Mono",monospace;font-size:12px;line-height:16px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);padding:8px 0;display:inline-block;border-bottom:2px solid transparent}
+.nav a b{font-weight:500;color:var(--at)}
+.nav a:hover{border-bottom-color:var(--ac);color:var(--ink)}
+.nav a.on{border-bottom-color:var(--ac)}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.btn.p{background:var(--ac);color:var(--onac)}
+.btn.p:hover{color:var(--onac);box-shadow:var(--glow)}
+.btn.s{border:1px solid var(--ls);color:var(--ink)}
+.btn.s:hover{border-color:var(--at);color:var(--at)}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.kv:first-of-type{border-top:0;padding-top:0}
+.kv span:last-child{color:var(--im);text-align:right}
+.dot{display:inline-block;width:8px;height:8px;border-radius:9999px;background:var(--ac);box-shadow:var(--glow);margin-right:8px}
+.bio p{margin:0 0 20px;font-size:17px;line-height:28px;color:var(--im);max-width:70ch}
+@media (max-width:900px){.g>*{grid-column:span 12}}
+@media (max-width:720px){.disp{font-size:44px!important}.pg{padding:16px!important}}
+</style>
+
+<div class="sans" style="--bg0:#0b0c0e;--bg1:#121418;--bg2:#1a1d22;--line:#2a2e35;--ls:#5f656f;--ink:#e6e6e1;--im:#9a9d98;--if:#7d817d;--ac:#c6ff3d;--onac:#0b0c0e;--at:#c6ff3d;--cy:#6fc8d6;--warn:#ffb020;--glow:0 0 12px rgba(198, 255, 61, 0.35); min-height: 1300px; background-color: var(--bg0); background-image: none; background-size: 24px 24px; color: var(--ink); position: relative;">
+<div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:0.035;background:repeating-linear-gradient(to bottom, #ffffff 0, #ffffff 1px, transparent 1px, transparent 3px);"></div>
+<div class="pg" style="position:relative;max-width:1280px;margin:0 auto;padding:24px 32px 64px;display:flex;flex-direction:column;gap:16px">
+
+<header style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:8px 0 16px;border-bottom:1px solid var(--line)">
+<a href="home.dark.html" style="font-weight:800;font-size:18px;line-height:24px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)">NOAH DECAILLE</a>
+<nav class="nav" aria-label="Primary" style="display:flex;flex-wrap:wrap;gap:8px 28px">
+<a href="about.dark.html" class="on"><b>01</b> / About</a>
+<a href="project-detail.dark.html"><b>02</b> / Projects</a>
+<a href="home.dark.html"><b>03</b> / Experience</a>
+<a href="log-post.dark.html"><b>04</b> / Log</a>
+</nav>
+<div class="ro">[ <span style="color:var(--at)">DARK</span> / LIGHT ]</div>
+</header>
+
+<main class="g" style="margin-top:8px">
+
+<section class="pn s8" style="padding:48px 40px 40px" aria-labelledby="t">
+<i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+<div class="ph" style="margin-bottom:28px"><b>01</b> / ABOUT <span class="rule"></span><span class="ro">NYC / ASTORIA</span></div>
+<h1 id="t" class="disp" style="margin:0;font-weight:800;font-size:64px;line-height:.95;letter-spacing:-.01em;max-width:760px">Marine, filmmaker, now backend engineer.</h1>
+<div class="bio" style="margin-top:32px">
+<p>I started in the Marine Corps as a network infrastructure specialist, four years in Okinawa keeping systems up. After that I went to film school on the GI Bill and worked in production in Los Angeles.</p>
+<p>Along the way I taught myself to code, and ended up as the sole developer of internal applications on a five-person IT team at BBC Studios in New York. I like the parts of software that have to keep working: data models, APIs, and the plumbing under them.</p>
+<p>Right now I'm going deeper on backend engineering and building portfolio projects in the open. [Add a closing line in your own voice here.]</p>
+</div>
+</section>
+
+<aside class="pn s4" style="align-self:start" aria-label="Portrait">
+<i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+<div class="ph"><b>//</b> ID <span class="rule"></span></div>
+<div style="height:280px;background:var(--bg2);border:1px solid var(--line);display:flex;align-items:flex-end;padding:12px"><span class="ro">[PORTRAIT, 4:5]</span></div>
+<div class="ro" style="display:flex;flex-direction:column;margin-top:20px">
+<div class="kv"><span>NAME</span><span>NOAH DECAILLE</span></div>
+<div class="kv"><span>BASE</span><span>ASTORIA, NYC</span></div>
+<div class="kv"><span>FOCUS</span><span>BACKEND</span></div>
+<div class="kv"><span>STATUS</span><span><span class="dot"></span>OPEN TO WORK</span></div>
+</div>
+</aside>
+
+<section class="pn s7" aria-labelledby="path">
+<i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+<div class="ph"><b>//</b> <span id="path">PATH</span> <span class="rule"></span><span class="ro">3 STAGES</span></div>
+<div style="display:flex;flex-direction:column">
+<div class="kv" style="padding:14px 0"><span class="ro" style="width:60px;flex:none">01</span><div style="flex:1;text-align:left"><div style="font-weight:600;font-size:20px;line-height:26px;color:var(--ink)">Network infrastructure</div><div style="font-size:15px;line-height:24px;color:var(--im)">U.S. Marine Corps, Okinawa.</div></div></div>
+<div class="kv" style="padding:14px 0"><span class="ro" style="width:60px;flex:none">02</span><div style="flex:1;text-align:left"><div style="font-weight:600;font-size:20px;line-height:26px;color:var(--ink)">Film production</div><div style="font-size:15px;line-height:24px;color:var(--im)">Film school and sets in Los Angeles.</div></div></div>
+<div class="kv" style="padding:14px 0"><span class="ro" style="width:60px;flex:none">03</span><div style="flex:1;text-align:left"><div style="font-weight:600;font-size:20px;line-height:26px;color:var(--ink)">Software</div><div style="font-size:15px;line-height:24px;color:var(--im)">Self-taught, then BBC Studios NY, now backend.</div></div></div>
+</div>
+</section>
+
+<section class="pn s5" aria-labelledby="stk">
+<i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+<div class="ph"><b>//</b> <span id="stk">STACK</span> <span class="rule"></span></div>
+<div style="display:flex;flex-wrap:wrap;gap:10px 16px"><span class="tag">[PYTHON]</span><span class="tag">[DJANGO]</span><span class="tag">[FASTAPI]</span><span class="tag">[POSTGRESQL]</span><span class="tag">[TYPESCRIPT]</span><span class="tag">[REACT]</span></div>
+<div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--line)"><div class="ro" style="margin-bottom:8px">OFF THE CLOCK</div><div style="font-size:15px;line-height:24px;color:var(--im)">[Cycling, the gym, anything else you want listed.]</div></div>
+</section>
+
+<section class="pn s12" aria-labelledby="ct">
+<i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+<div class="ph"><b>05</b> / <span id="ct">CONTACT</span> <span class="rule"></span><span class="ro">REPLY TIME: [N] DAYS</span></div>
+<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px">
+<div style="font-weight:700;font-size:28px;line-height:34px;max-width:620px">Hiring for backend, or want to build something?</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px">
+<a class="btn p" href="about.dark.html">▸ Email me</a>
+<a class="btn s" href="about.dark.html">GitHub</a>
+<a class="btn s" href="about.dark.html">LinkedIn</a>
+<a class="btn s" href="about.dark.html">Resume (PDF)</a>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:16px;border-top:1px solid var(--line);margin-top:16px">
+<span class="ro">© NOAH DECAILLE · 40.7644 N / 73.9235 W</span>
+<span class="ro"><a href="about.dark.html">GITHUB ▸</a> &nbsp; <a href="about.dark.html">LINKEDIN ▸</a> &nbsp; <a href="about.dark.html">EMAIL ▸</a></span>
+</footer>
+
+</div>
+</div>
+
+
+</body>
+</html>

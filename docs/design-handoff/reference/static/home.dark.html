@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Noah Decaille: Home</title>
+
+</head>
+<body>
+
+
+
+
+<style>
+@font-face{font-family:'Archivo';font-weight:400;src:url('../../fonts/archivo-latin-400-normal.woff2') format('woff2');}
+@font-face{font-family:'Archivo';font-weight:500;src:url('../../fonts/archivo-latin-500-normal.woff2') format('woff2');}
+@font-face{font-family:'Archivo';font-weight:600;src:url('../../fonts/archivo-latin-600-normal.woff2') format('woff2');}
+@font-face{font-family:'Archivo';font-weight:700;src:url('../../fonts/archivo-latin-700-normal.woff2') format('woff2');}
+@font-face{font-family:'Archivo';font-weight:800;src:url('../../fonts/archivo-latin-800-normal.woff2') format('woff2');}
+@font-face{font-family:'JetBrains Mono';font-weight:400;src:url('../../fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');}
+@font-face{font-family:'JetBrains Mono';font-weight:500;src:url('../../fonts/jetbrains-mono-latin-500-normal.woff2') format('woff2');}
+
+body{margin:0}
+*{box-sizing:border-box}
+a{color:var(--cy);text-decoration:none}
+a:hover{color:var(--at)}
+.sans{font-family:Archivo,"Helvetica Neue",Arial,sans-serif}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+.g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.s4{grid-column:span 4}.s5{grid-column:span 5}.s6{grid-column:span 6}.s7{grid-column:span 7}.s8{grid-column:span 8}.s12{grid-column:span 12}
+.pn{position:relative;background:var(--bg1);padding:24px;min-width:0}
+.pn i{position:absolute;width:12px;height:12px;border:2px solid var(--ls);pointer-events:none}
+.pn i.tl{top:0;left:0;border-right:0;border-bottom:0}
+.pn i.tr{top:0;right:0;border-left:0;border-bottom:0}
+.pn i.bl{bottom:0;left:0;border-right:0;border-top:0}
+.pn i.br{bottom:0;right:0;border-left:0;border-top:0}
+.pn:hover i{border-color:var(--at)}
+.ph{display:flex;align-items:center;gap:12px;margin-bottom:20px;font-family:"JetBrains Mono",monospace;font-size:12px;line-height:16px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.ph b{font-weight:500;color:var(--at)}
+.ph .rule{flex:1;height:1px;background:var(--line)}
+.ph .ro{font-weight:400;letter-spacing:.04em;color:var(--if)}
+.ro{font-family:"JetBrains Mono",monospace;font-size:12px;line-height:16px;letter-spacing:.04em;color:var(--if)}
+.tag{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:11px;line-height:16px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--cy)}
+.nav a{font-family:"JetBrains Mono",monospace;font-size:12px;line-height:16px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);padding:8px 0;display:inline-block;border-bottom:2px solid transparent}
+.nav a b{font-weight:500;color:var(--at)}
+.nav a:hover{border-bottom-color:var(--ac);color:var(--ink)}
+.nav a.on{border-bottom-color:var(--ac)}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.btn.p{background:var(--ac);color:var(--onac)}
+.btn.p:hover{color:var(--onac);box-shadow:var(--glow)}
+.btn.s{border:1px solid var(--ls);color:var(--ink)}
+.btn.s:hover{border-color:var(--at);color:var(--at)}
+.row{display:flex;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0;padding-top:0}
+.dot{display:inline-block;width:8px;height:8px;border-radius:9999px;background:var(--ac);box-shadow:var(--glow);margin-right:8px}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.cur{display:inline-block;color:var(--at);animation:blink 1s steps(1) infinite}
+@media (prefers-reduced-motion:reduce){.cur{animation:none}}
+@media (max-width:900px){.g>*{grid-column:span 12}}
+@media (max-width:720px){.disp{font-size:44px!important}.pg{padding:16px!important}}
+</style>
+
+<div class="sans" style="--bg0:#0b0c0e;--bg1:#121418;--bg2:#1a1d22;--line:#2a2e35;--ls:#5f656f;--ink:#e6e6e1;--im:#9a9d98;--if:#7d817d;--ac:#c6ff3d;--onac:#0b0c0e;--at:#c6ff3d;--cy:#6fc8d6;--warn:#ffb020;--glow:0 0 12px rgba(198, 255, 61, 0.35); min-height: 1560px; background-color: var(--bg0); background-image: none; background-size: 24px 24px; color: var(--ink); position: relative;">
+<div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:0.035;background:repeating-linear-gradient(to bottom, #ffffff 0, #ffffff 1px, transparent 1px, transparent 3px);"></div>
+<div class="pg" style="position:relative;max-width:1280px;margin:0 auto;padding:24px 32px 64px;display:flex;flex-direction:column;gap:16px">
+
+<header style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:8px 0 16px;border-bottom:1px solid var(--line)">
+<a href="#" style="font-weight:800;font-size:18px;line-height:24px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)">NOAH DECAILLE</a>
+<nav class="nav" aria-label="Primary" style="display:flex;flex-wrap:wrap;gap:8px 28px">
+<a href="#about"><b>01</b> / About</a>
+<a href="#projects" class="on"><b>02</b> / Projects</a>
+<a href="#experience"><b>03</b> / Experience</a>
+<a href="#log"><b>04</b> / Log</a>
+</nav>
+<div class="ro">[ <span style="color:var(--at)">DARK</span> / LIGHT ]</div>
+</header>
+
+<main class="g">
+
+<section id="about" class="pn s8" aria-labelledby="hero" style="padding:48px 40px 40px">
+<i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+<div class="ph" style="margin-bottom:28px"><b>01</b> / ABOUT <span class="rule"></span><span class="ro">NYC / ASTORIA</span></div>
+<h1 id="hero" class="disp" style="margin:0;font-weight:800;font-size:64px;line-height:.95;letter-spacing:-.01em;max-width:760px">Backend engineer. Network nerd turned developer.<span class="cur mono" style="font-weight:400">▌</span></h1>
+<p style="margin:24px 0 0;max-width:560px;font-size:17px;line-height:28px;color:var(--im)">Four years running network infrastructure for the Marines in Okinawa, a detour through film production, then sole developer of internal apps at BBC Studios NY. Now going deeper on backend.</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px">
+<a class="btn p" href="#projects">▸ View projects</a>
+<a class="btn s" href="#about">Contact</a>
+</div>
+</section>
+
+<aside class="pn s4" aria-label="Status">
+<i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+<div class="ph"><b>//</b> STATUS <span class="rule"></span></div>
+<div style="display:flex;flex-direction:column;gap:14px">
+<div class="mono" style="font-size:14px;line-height:22px;color:var(--ink)"><span class="dot"></span>OPEN TO WORK</div>
+<div class="ro" style="display:flex;justify-content:space-between;gap:12px"><span>ROLE</span><span style="color:var(--im)">BACKEND / FULL-STACK</span></div>
+<div class="ro" style="display:flex;justify-content:space-between;gap:12px"><span>LOCATION</span><span style="color:var(--im)">NYC, UTC-4</span></div>
+<div class="ro" style="display:flex;justify-content:space-between;gap:12px"><span>COORD</span><span style="color:var(--im)">40.7644 / -73.9235</span></div>
+<div class="ro" style="display:flex;justify-content:space-between;gap:12px"><span>PREV</span><span style="color:var(--im)">BBC STUDIOS NY</span></div>
+<div class="ro" style="display:flex;justify-content:space-between;gap:12px"><span>BUILD</span><span style="color:var(--at)">▲ PASSING</span></div>
+</div>
+<div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--line)" class="ro">noah@astoria:~$ <span style="color:var(--at)">available</span></div>
+</aside>
+
+<section id="projects" class="pn s7" aria-labelledby="feat">
+<i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+<div class="ph"><b>02</b> / FEATURED <span class="rule"></span><span class="ro">PROJECT 01 OF 04</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:8px 12px;margin-bottom:12px"><span class="tag">[FASTAPI]</span><span class="tag">[POSTGRES]</span><span class="tag">[REACT]</span><span class="tag">[AI AGENTS]</span></div>
+<h2 id="feat" style="margin:0;font-weight:700;font-size:40px;line-height:44px;letter-spacing:-.01em">Nightcap</h2>
+<p style="margin:12px 0 0;max-width:520px;font-size:17px;line-height:28px;color:var(--im)">An AI planner for date and hangout nights in NYC. Tell it the vibe and the budget, get a route of places that fit.</p>
+<div style="margin-top:24px;height:160px;background:var(--bg2);border:1px solid var(--line);display:flex;align-items:flex-end;padding:12px"><span class="ro">[SCREENSHOT: ITINERARY VIEW]</span></div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;gap:12px;flex-wrap:wrap">
+<a class="btn s" href="#projects">▸ Read the write-up</a>
+<span class="ro">STATUS: IN PROGRESS</span>
+</div>
+</section>
+
+<aside class="pn s5" aria-label="More projects">
+<i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+<div class="ph"><b>//</b> ALSO BUILT <span class="rule"></span><a class="ro" href="#projects">ALL ▸</a></div>
+<div class="row"><span class="ro" style="width:28px">02</span><div style="flex:1"><div style="font-weight:600;font-size:20px;line-height:26px">Foodsy</div><div style="font-size:15px;line-height:24px;color:var(--im)">Full-stack food app, end to end.</div><div style="margin-top:6px" class="tag">[FULL-STACK]</div></div></div>
+<div class="row"><span class="ro" style="width:28px">03</span><div style="flex:1"><div style="font-weight:600;font-size:20px;line-height:26px">OpsAgent</div><div style="font-size:15px;line-height:24px;color:var(--im)">AI agent orchestration for ops workflows.</div><div style="margin-top:6px" class="tag">[AGENTS]</div></div></div>
+<div class="row"><span class="ro" style="width:28px">04</span><div style="flex:1"><div style="font-weight:600;font-size:20px;line-height:26px">Ticketing practice build</div><div style="font-size:15px;line-height:24px;color:var(--im)">Ticketmaster-style system design exercise.</div><div style="margin-top:6px" class="tag">[DJANGO] [REACT]</div></div></div>
+</aside>
+
+<section id="experience" class="pn s7" aria-labelledby="xp">
+<i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+<div class="ph"><b>03</b> / <span id="xp">EXPERIENCE</span> <span class="rule"></span><span class="ro">TIMELINE</span></div>
+<div class="row"><span class="ro" style="width:96px;flex:none">[YYYY] – NOW</span><div style="flex:1"><div style="font-weight:600;font-size:20px;line-height:26px">Independent, backend focus</div><div style="font-size:15px;line-height:24px;color:var(--im)">Portfolio builds in Django, FastAPI and Postgres.</div></div></div>
+<div class="row"><span class="ro" style="width:96px;flex:none">[YYYY] – [YYYY]</span><div style="flex:1"><div style="font-weight:600;font-size:20px;line-height:26px">Software engineer, BBC Studios NY</div><div style="font-size:15px;line-height:24px;color:var(--im)">Sole developer of internal applications on a five-person IT team.</div></div></div>
+<div class="row"><span class="ro" style="width:96px;flex:none">[YYYY] – [YYYY]</span><div style="flex:1"><div style="font-weight:600;font-size:20px;line-height:26px">Film production, Los Angeles</div><div style="font-size:15px;line-height:24px;color:var(--im)">Film school on the GI Bill, then on set. Taught myself to code here.</div></div></div>
+<div class="row"><span class="ro" style="width:96px;flex:none">[YYYY] – [YYYY]</span><div style="flex:1"><div style="font-weight:600;font-size:20px;line-height:26px">Network Infrastructure Specialist, USMC</div><div style="font-size:15px;line-height:24px;color:var(--im)">Four years in Okinawa.</div></div></div>
+</section>
+
+<aside class="pn s5" aria-label="Stack">
+<i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+<div class="ph"><b>//</b> STACK <span class="rule"></span><span class="ro">DAILY</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:10px 16px">
+<span class="tag">[PYTHON]</span><span class="tag">[DJANGO]</span><span class="tag">[FASTAPI]</span><span class="tag">[POSTGRESQL]</span><span class="tag">[TYPESCRIPT]</span><span class="tag">[REACT]</span>
+</div>
+<div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--line)">
+<div class="ro" style="margin-bottom:8px">LEARNING</div>
+<div style="display:flex;flex-wrap:wrap;gap:10px 16px"><span class="tag">[AGENT OBSERVABILITY]</span><span class="tag">[SYSTEM DESIGN]</span></div>
+</div>
+</aside>
+
+<section id="log" class="pn s12" aria-labelledby="lg">
+<i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+<div class="ph"><b>04</b> / <span id="lg">LOG</span> <span class="rule"></span><a class="ro" href="#log">ALL ENTRIES ▸</a></div>
+<div class="g" style="gap:24px">
+<a href="#log" class="s4" style="display:block;color:var(--ink)"><div class="ro">[YYYY-MM-DD] · <span style="color:var(--cy)">BACKEND</span></div><div style="font-weight:600;font-size:20px;line-height:26px;margin-top:8px">[Post title: Django the way production does it]</div><div style="font-size:15px;line-height:24px;color:var(--im);margin-top:8px">[One-line excerpt goes here.]</div></a>
+<a href="#log" class="s4" style="display:block;color:var(--ink)"><div class="ro">[YYYY-MM-DD] · <span style="color:var(--cy)">AGENTS</span></div><div style="font-weight:600;font-size:20px;line-height:26px;margin-top:8px">[Post title: Notes from building an AI planner]</div><div style="font-size:15px;line-height:24px;color:var(--im);margin-top:8px">[One-line excerpt goes here.]</div></a>
+<a href="#log" class="s4" style="display:block;color:var(--ink)"><div class="ro">[YYYY-MM-DD] · <span style="color:var(--cy)">CAREER</span></div><div style="font-weight:600;font-size:20px;line-height:26px;margin-top:8px">[Post title: From Marine network engineer to developer]</div><div style="font-size:15px;line-height:24px;color:var(--im);margin-top:8px">[One-line excerpt goes here.]</div></a>
+</div>
+</section>
+
+</main>
+
+<footer style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:16px;border-top:1px solid var(--line)">
+<span class="ro">© NOAH DECAILLE · 40.7644 N / 73.9235 W</span>
+<span class="ro"><a href="#about">GITHUB ▸</a> &nbsp; <a href="#about">LINKEDIN ▸</a> &nbsp; <a href="#about">EMAIL ▸</a></span>
+</footer>
+
+</div>
+</div>
+
+
+</body>
+</html>

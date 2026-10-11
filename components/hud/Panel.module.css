@@ -1,0 +1,16 @@
+.panel {
+  position: relative;
+  min-width: 0;
+  padding: var(--space-6);
+  background: var(--bg-100);
+}
+
+.hero {
+  padding: var(--space-12) 40px 40px;
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding: var(--space-8) var(--space-6);
+  }
+}

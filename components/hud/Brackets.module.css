@@ -1,0 +1,38 @@
+.brackets {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.corner {
+  position: absolute;
+  width: var(--space-3);
+  height: var(--space-3);
+  border: var(--stroke-bracket) solid var(--line-strong);
+  transition:
+    transform 120ms ease-out,
+    border-color 120ms ease-out;
+}
+
+.tl { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+.tr { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+.bl { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+.br { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
+/* Brackets react to whatever box they sit in: hover or keyboard focus inside it. */
+:hover > .brackets .corner,
+:focus-within > .brackets .corner,
+.active .corner {
+  border-color: var(--accent-text);
+}
+
+:hover > .brackets .tl, :focus-within > .brackets .tl { transform: translate(2px, 2px); }
+:hover > .brackets .tr, :focus-within > .brackets .tr { transform: translate(-2px, 2px); }
+:hover > .brackets .bl, :focus-within > .brackets .bl { transform: translate(2px, -2px); }
+:hover > .brackets .br, :focus-within > .brackets .br { transform: translate(-2px, -2px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .corner {
+    transition: none;
+  }
+}

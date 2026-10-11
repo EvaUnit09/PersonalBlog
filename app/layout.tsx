@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SiteHeader } from "@/components/layout/SiteHeader";
 import { archivo, jetbrainsMono } from "./fonts";
 import "./globals.css";
+import styles from "./layout.module.css";
 
 export const metadata: Metadata = {
   title: {
@@ -18,7 +21,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-theme="dark"
       className={`${archivo.variable} ${jetbrainsMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <div className={styles.shell}>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </div>
+      </body>
     </html>
   );
 }

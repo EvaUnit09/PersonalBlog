@@ -1,0 +1,36 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin: 0;
+  color: var(--ink-faint);
+}
+
+.ruled {
+  padding: 10px 0;
+  border-top: var(--stroke-hair) solid var(--line);
+}
+
+.ruled:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.label,
+.value {
+  margin: 0;
+}
+
+.value {
+  text-align: right;
+  color: var(--ink-muted);
+}
+
+.accent {
+  color: var(--accent-text);
+}
+
+.bar {
+  margin: 0;
+  color: var(--ink-faint);
+}

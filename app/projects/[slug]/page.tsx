@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Mdx } from "@/components/content/Mdx";
+import { CachedMdx } from "@/components/content/CachedMdx";
 import { ProjectDetail } from "@/components/projects/ProjectDetail";
 import { getProjects } from "@/lib/content/projects";
 import { neighborsOf } from "@/lib/neighbors";
@@ -34,7 +34,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
       position={projects.indexOf(project) + 1}
       total={projects.length}
       neighbors={neighborsOf(projects, project.slug)}
-      body={hasBody ? <Mdx source={project.body} /> : undefined}
+      body={hasBody ? <CachedMdx source={project.body} /> : undefined}
     />
   );
 }

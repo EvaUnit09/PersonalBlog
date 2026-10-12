@@ -12,11 +12,3 @@
 .wordmark:hover {
   color: var(--ink);
 }
-
-.theme {
-  color: var(--ink-faint);
-}
-
-.themeActive {
-  color: var(--accent-text);
-}

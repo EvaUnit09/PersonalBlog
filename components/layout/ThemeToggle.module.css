@@ -1,0 +1,27 @@
+.toggle {
+  color: var(--ink-faint);
+  white-space: pre;
+}
+
+.option {
+  display: inline;
+}
+
+.button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  color: var(--ink-faint);
+  cursor: pointer;
+}
+
+.button:hover {
+  color: var(--ink-muted);
+}
+
+.button[aria-pressed="true"],
+.button[aria-pressed="true"]:hover {
+  color: var(--accent-text);
+}

@@ -1,0 +1,37 @@
+.row {
+  display: flex;
+  gap: var(--space-4);
+  padding: 14px 0;
+  border-top: var(--stroke-hair) solid var(--line);
+}
+
+.row:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.marker {
+  flex: none;
+  color: var(--ink-faint);
+}
+
+.index {
+  width: 28px;
+}
+
+.period {
+  width: 96px;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.summary {
+  color: var(--ink-muted);
+}
+
+.extra {
+  margin-top: 6px;
+}

@@ -6,14 +6,6 @@ export interface ExperienceEntry {
   summary: string;
 }
 
-export interface LogEntry {
-  slug: string;
-  date: string;
-  category: string;
-  title: string;
-  excerpt: string;
-}
-
 export interface Hero {
   headline: string;
   lede: string;
@@ -77,5 +69,3 @@ export const STACK = {
   daily: ["Python", "Django", "FastAPI", "PostgreSQL", "TypeScript", "React"],
   learning: ["Agent observability", "System design"],
 } as const satisfies Stack;
-
-export const LOG_ENTRIES: readonly LogEntry[] = [];

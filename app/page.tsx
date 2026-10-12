@@ -5,11 +5,12 @@ import { HeroPanel } from "@/components/home/HeroPanel";
 import { LogPanel } from "@/components/home/LogPanel";
 import { StackPanel } from "@/components/home/StackPanel";
 import { StatusPanel } from "@/components/home/StatusPanel";
-import { EXPERIENCE, HERO, LOG_ENTRIES, STACK, STATUS } from "@/content/home";
+import { EXPERIENCE, HERO, STACK, STATUS } from "@/content/home";
+import { getPosts } from "@/lib/content/log";
 import { getProjects } from "@/lib/content/projects";
 
 export default async function HomePage() {
-  const projects = await getProjects();
+  const [projects, posts] = await Promise.all([getProjects(), getPosts()]);
 
   return (
     <main className="grid">
@@ -19,7 +20,7 @@ export default async function HomePage() {
       <AlsoBuiltPanel projects={projects} />
       <ExperiencePanel entries={EXPERIENCE} />
       <StackPanel stack={STACK} />
-      <LogPanel entries={LOG_ENTRIES} />
+      <LogPanel posts={posts} />
     </main>
   );
 }

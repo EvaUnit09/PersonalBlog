@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures";
 
 const PROJECT_SLUGS = ["nightcap", "foodsy", "opsagent", "ticketing"] as const;
 

@@ -4,6 +4,7 @@ export type Theme = (typeof THEMES)[number];
 export const THEME_STORAGE_KEY = "theme";
 
 const DEFAULT_THEME: Theme = "dark";
+const LIGHT_THEME: Theme = "light";
 const LIGHT_SCHEME_QUERY = "(prefers-color-scheme: light)";
 
 /** Boundary guard: localStorage and the DOM attribute are untrusted strings. */
@@ -20,6 +21,7 @@ export function themeInitScript(): string {
   const themes = JSON.stringify(THEMES);
   const key = JSON.stringify(THEME_STORAGE_KEY);
   const fallback = JSON.stringify(DEFAULT_THEME);
+  const light = JSON.stringify(LIGHT_THEME);
   const query = JSON.stringify(LIGHT_SCHEME_QUERY);
-  return `(function(){var themes=${themes},theme=null;try{var stored=localStorage.getItem(${key});if(themes.indexOf(stored)>-1)theme=stored}catch(e){}if(!theme){try{theme=matchMedia(${query}).matches?"light":${fallback}}catch(e){theme=${fallback}}}document.documentElement.dataset.theme=theme})()`;
+  return `(function(){var themes=${themes},theme=null;try{var stored=localStorage.getItem(${key});if(themes.indexOf(stored)>-1)theme=stored}catch(e){}if(!theme){try{theme=matchMedia(${query}).matches?${light}:${fallback}}catch(e){theme=${fallback}}}document.documentElement.dataset.theme=theme})()`;
 }

@@ -37,7 +37,7 @@ export function ThemeToggle() {
     <div role="group" aria-label="Theme" className={cx(styles.toggle, "t-readout")}>
       <span aria-hidden="true">[ </span>
       {THEMES.map((theme, index) => (
-        <span key={theme} className={styles.option}>
+        <span key={theme}>
           {index > 0 && <span aria-hidden="true"> / </span>}
           <button
             type="button"

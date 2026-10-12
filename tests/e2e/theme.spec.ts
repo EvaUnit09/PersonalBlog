@@ -99,3 +99,14 @@ test.describe("theme", () => {
     await expect(page.getByRole("button", { name: "DARK" })).toBeFocused();
   });
 });
+
+test.describe("theme without JavaScript", () => {
+  test.use({ javaScriptEnabled: false, colorScheme: "light" });
+
+  test("falls back to dark tokens with scanlines", async ({ page }) => {
+    await page.goto("/");
+
+    expect(await page.evaluate(() => document.documentElement.dataset.theme)).toBeUndefined();
+    expect(await getScanlineStyle(page)).toEqual({ content: '""', opacity: SCANLINE_OPACITY, pointerEvents: "none" });
+  });
+});

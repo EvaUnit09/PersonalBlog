@@ -4,7 +4,7 @@ import { Crumbs } from "./Crumbs";
 import { PostNav } from "./PostNav";
 
 const PREVIOUS = { href: "/projects/foodsy", title: "Foodsy" };
-const NEXT = { href: "/projects/opsagent", title: "OpsAgent" };
+const NEXT = { href: "/projects/moody", title: "Moody" };
 
 describe("PostNav", () => {
   it("links both neighbors, previous first", () => {
@@ -12,11 +12,11 @@ describe("PostNav", () => {
     const links = screen.getAllByRole("link");
 
     expect(screen.getByRole("navigation", { name: "Project navigation" })).toBeInTheDocument();
-    expect(links.map((link) => link.getAttribute("href"))).toEqual(["/projects/foodsy", "/projects/opsagent"]);
+    expect(links.map((link) => link.getAttribute("href"))).toEqual(["/projects/foodsy", "/projects/moody"]);
     expect(links[0]).toHaveTextContent("◂ PREVIOUS");
     expect(links[0]).toHaveTextContent("Foodsy");
     expect(links[1]).toHaveTextContent("NEXT ▸");
-    expect(links[1]).toHaveTextContent("OpsAgent");
+    expect(links[1]).toHaveTextContent("Moody");
   });
 
   it("renders only the previous link when there is no next", () => {

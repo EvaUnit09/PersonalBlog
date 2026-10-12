@@ -3,7 +3,7 @@ import { expect, test } from "./fixtures";
 const PANEL_NAMES_IN_ORDER = [
   { role: "region", name: /Backend engineer/ },
   { role: "complementary", name: "Status" },
-  { role: "region", name: "Nightcap" },
+  { role: "region", name: "NightCap" },
   { role: "complementary", name: "More projects" },
   { role: "region", name: "Experience" },
   { role: "complementary", name: "Stack" },

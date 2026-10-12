@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { Boot } from "@/components/boot/Boot";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SITE } from "@/content/site";
 import { bootInitScript } from "@/lib/boot";
 import { getSiteOrigin } from "@/lib/site-url";
 import { themeInitScript } from "@/lib/theme";
@@ -13,10 +14,22 @@ import styles from "./layout.module.css";
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteOrigin()),
   title: {
-    default: "Noah Decaille",
-    template: "Noah Decaille: %s",
+    default: SITE.name,
+    template: `${SITE.name}: %s`,
   },
-  description: "Backend engineer. Network nerd turned developer.",
+  description: SITE.description,
+  openGraph: {
+    title: SITE.name,
+    description: SITE.description,
+    siteName: SITE.name,
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary",
+    title: SITE.name,
+    description: SITE.description,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

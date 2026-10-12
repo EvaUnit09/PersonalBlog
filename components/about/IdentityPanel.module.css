@@ -2,16 +2,6 @@
   align-self: start;
 }
 
-.portrait {
-  display: flex;
-  align-items: flex-end;
-  height: 280px;
-  padding: var(--space-3);
-  background: var(--bg-200);
-  border: var(--stroke-hair) solid var(--line);
-  color: var(--ink-faint);
-}
-
 .rows {
   margin: var(--space-6) 0 0;
 }

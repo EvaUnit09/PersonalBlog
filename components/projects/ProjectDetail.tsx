@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { Crumbs } from "@/components/hud/Crumbs";
-import { Panel } from "@/components/hud/Panel";
 import { PostNav } from "@/components/hud/PostNav";
 import { toNavTarget } from "@/components/hud/toNavTarget";
 import type { Project } from "@/lib/content/projects";
@@ -31,9 +30,6 @@ export function ProjectDetail({ project, position, total, neighbors, body }: Pro
     <main className={styles.stack}>
       <Crumbs backHref="/projects" backLabel="ALL PROJECTS" items={crumbs} />
       <ProjectHero project={project} />
-      <Panel as="div" aria-hidden="true" className={styles.shot}>
-        <span className="t-readout">[SCREENSHOT, 1280 x 720]</span>
-      </Panel>
       <div className="grid">
         {hasBody && (
           <article aria-label={`${project.title} write-up`} className="span-8">

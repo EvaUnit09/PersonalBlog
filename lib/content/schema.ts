@@ -4,7 +4,7 @@ export const PROJECT_STATUSES = ["in-progress", "shipped"] as const;
 export type ProjectStatus = (typeof PROJECT_STATUSES)[number];
 
 export const PROJECT_STATUS_LABEL: Record<ProjectStatus, string> = {
-  "in-progress": "IN PROGRESS",
+  "in-progress": "CURRENTLY BUILDING",
   shipped: "SHIPPED",
 };
 

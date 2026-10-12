@@ -36,12 +36,12 @@ describe("ListRow", () => {
     render(
       <ol>
         <ListRow marker="02" title="A" summary="a" />
-        <ListRow marker="[YYYY] – NOW" markerSize="period" title="B" summary="b" />
+        <ListRow marker="2024 – 2026" markerSize="period" title="B" summary="b" />
       </ol>,
     );
 
     expect(screen.getByText("02")).toHaveClass(styles.index);
-    expect(screen.getByText("[YYYY] – NOW")).toHaveClass(styles.period);
-    expect(screen.getByText("[YYYY] – NOW")).not.toHaveClass(styles.index);
+    expect(screen.getByText("2024 – 2026")).toHaveClass(styles.period);
+    expect(screen.getByText("2024 – 2026")).not.toHaveClass(styles.index);
   });
 });

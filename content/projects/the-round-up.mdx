@@ -1,0 +1,18 @@
+---
+title: "The Round Up"
+summary: "Hackathon project: a personalised daily email digest that surfaces unread BBC.com articles from each user's reading habits."
+tags: ["Hackathon", "Snowflake", "FastAPI", "Next.js"]
+status: shipped
+order: 4
+links:
+  source: "https://github.com/EvaUnit09/the-round-up"
+  demo: "https://the-round-up.vercel.app"
+spec:
+  - { label: Type, value: Hackathon }
+  - { label: Event, value: BBC Datathon 2026 }
+  - { label: Data, value: Snowflake }
+---
+
+Hackathon project from BBC Datathon 2026. A personalised daily email digest that surfaces the articles each BBC.com user is most likely to engage with: unread pieces scored from that user's reading history, with no machine learning and no LLM for the subject line.
+
+User affinity is a Snowflake table: the last 7 days of reads, broken into content pillars, stored as each pillar's share of total reads. FastAPI serves the digest. The Next.js frontend shows an email preview and an intelligence panel that explains why each article was chosen.

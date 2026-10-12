@@ -8,17 +8,6 @@
   color: var(--ink-muted);
 }
 
-.shot {
-  display: flex;
-  align-items: flex-end;
-  height: 160px;
-  margin-top: var(--space-6);
-  padding: var(--space-3);
-  background: var(--bg-200);
-  border: var(--stroke-hair) solid var(--line);
-  color: var(--ink-faint);
-}
-
 .footer {
   display: flex;
   flex-wrap: wrap;

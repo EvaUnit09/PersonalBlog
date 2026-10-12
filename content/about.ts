@@ -21,9 +21,9 @@ export const ABOUT = {
   baseReadout: "NYC / ASTORIA",
   headline: "Marine, filmmaker, now backend engineer.",
   bio: [
-    "I started in the Marine Corps as a network infrastructure specialist, four years in Okinawa keeping systems up. After that I went to film school on the GI Bill and worked in production in Los Angeles.",
-    "Along the way I taught myself to code, and ended up as the sole developer of internal applications on a five-person IT team at BBC Studios in New York. I like the parts of software that have to keep working: data models, APIs, and the plumbing under them.",
-    "Right now I'm going deeper on backend engineering and building portfolio projects in the open.",
+    "I spent four years as a Network Infrastructure Specialist in the Marine Corps in Okinawa, keeping switches, routers, DNS, and DHCP up for 500+ users, including during exercises and deployments.",
+    "After that I completed an Associate of Science in Film, Cinematography at The Los Angeles Film School. I then joined BBC Studios in New York as a Software Engineer, building internal platforms in FastAPI, Django, React, and PostgreSQL, including LLM-powered ops workflows.",
+    "I like the parts of software that have to keep working: data models, APIs, and the plumbing under them. Right now I am going deeper on backend engineering and building projects in the open.",
   ],
   identity: [
     { label: "NAME", value: "NOAH DECAILLE" },
@@ -31,9 +31,12 @@ export const ABOUT = {
     { label: "FOCUS", value: "BACKEND" },
   ],
   path: [
-    { title: "Network infrastructure", summary: "U.S. Marine Corps, Okinawa." },
-    { title: "Film production", summary: "Film school and sets in Los Angeles." },
-    { title: "Software", summary: "Self-taught, then BBC Studios NY, now backend." },
+    { title: "Network infrastructure", summary: "U.S. Marine Corps, Okinawa. Jun 2015 to Jun 2020." },
+    {
+      title: "Film school",
+      summary: "The Los Angeles Film School. Associate of Science in Film, Cinematography. Jan 2021 to Sep 2023.",
+    },
+    { title: "Software", summary: "Software Engineer, BBC Studios, New York. Aug 2024 to Aug 2026." },
   ],
   contactPrompt: "Hiring for backend, or want to build something?",
 } as const satisfies AboutContent;

@@ -58,13 +58,13 @@ describe("FeaturedPanel", () => {
   it("shows the featured project's status", () => {
     render(<FeaturedPanel projects={PROJECTS} />);
 
-    expect(screen.getByText("STATUS: IN PROGRESS")).toBeInTheDocument();
+    expect(screen.getByText("STATUS: CURRENTLY BUILDING")).toBeInTheDocument();
   });
 
-  it("hides the decorative screenshot placeholder from assistive tech", () => {
+  it("has no screenshot placeholder", () => {
     render(<FeaturedPanel projects={PROJECTS} />);
 
-    expect(screen.getByText(/SCREENSHOT/).closest("[aria-hidden='true']")).not.toBeNull();
+    expect(screen.queryByText(/SCREENSHOT/)).not.toBeInTheDocument();
   });
 });
 

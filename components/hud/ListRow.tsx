@@ -3,7 +3,7 @@ import { cx } from "@/lib/cx";
 import styles from "./ListRow.module.css";
 
 interface ListRowProps {
-  /** Index ("02") or period ("[YYYY] – NOW") shown in the leading column. */
+  /** Index ("02") or period ("2024 – 2026") shown in the leading column. */
   marker: ReactNode;
   /** "index" fits a two-digit number; "period" fits a date range. */
   markerSize?: "index" | "period";

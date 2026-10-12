@@ -1,7 +1,18 @@
 ---
 title: "Foodsy"
-summary: "Full-stack food app, end to end."
-tags: ["Full-stack"]
-status: in-progress
+summary: "A real-time social dining app: create a session, invite friends with a join code, and vote on nearby restaurants together."
+tags: ["React", "Next.js", "Spring Boot", "PostgreSQL", "WebSockets"]
+status: shipped
 order: 2
+links:
+  source: "https://github.com/EvaUnit09/Foodsy"
+  demo: "https://foodsy-frontend.vercel.app"
+spec:
+  - { label: Backend, value: Spring Boot }
+  - { label: Data, value: PostgreSQL on RDS }
+  - { label: Auth, value: Google OAuth2 + JWT }
 ---
+
+A real-time social dining coordination app that solves the "where should we eat?" problem for groups. Create a session, invite friends with a join code, and vote on nearby restaurants together.
+
+Restaurant data is aggregated from Google Places and Foursquare. Voting updates live over STOMP WebSockets. Auth is Google OAuth2 with JWT. The frontend is React and Next.js on Vercel; the backend is Spring Boot and PostgreSQL on AWS EC2 and RDS.

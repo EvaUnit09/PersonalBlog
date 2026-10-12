@@ -1,0 +1,18 @@
+---
+title: "Moody"
+summary: "A RAG movie recommender: describe a mood or scenario in plain language and get curated picks with reasons, not genre dropdowns."
+tags: ["FastAPI", "pgvector", "React", "TypeScript", "Anthropic"]
+status: shipped
+order: 3
+links:
+  source: "https://github.com/EvaUnit09/Moody"
+  demo: "https://moody-alpha-three.vercel.app"
+spec:
+  - { label: Backend, value: FastAPI }
+  - { label: Vectors, value: Postgres + pgvector }
+  - { label: Models, value: Claude Haiku + embeddings }
+---
+
+A RAG-based movie recommendation app. Describe a mood or scenario in plain language and get back curated picks with reasons, instead of filtering by genre or year dropdowns.
+
+About 30k movies are embedded in Postgres as pgvector halfvec. Claude Haiku expands the query, vector search returns candidates, then Haiku reranks to at most 6 picks with a one-line reason for each. Watch-provider links for the US region ship with the response.

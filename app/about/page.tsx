@@ -8,12 +8,9 @@ import { ABOUT } from "@/content/about";
 import { STACK, STATUS } from "@/content/home";
 import { CONTACT_LINKS } from "@/content/site";
 
-const DESCRIPTION =
-  "Marine, filmmaker, now backend engineer. Network infrastructure, film production, then software.";
-
 export const metadata: Metadata = {
   title: "About",
-  description: DESCRIPTION,
+  description: `${ABOUT.headline} Network infrastructure in Okinawa, film school in Los Angeles, then software at BBC Studios.`,
 };
 
 export default function AboutPage() {

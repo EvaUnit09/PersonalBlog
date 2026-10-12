@@ -9,6 +9,8 @@
 
 .cursor {
   display: inline-block;
+  /* The latin JetBrains subset has no ▌, and next/font's metric-adjusted Arial fallback draws it tall and shifted up. */
+  font-family: ui-monospace, Menlo, Consolas, monospace;
   font-weight: 400;
   color: var(--accent-text);
   animation: blink 1s steps(1) infinite;

@@ -5,11 +5,6 @@
   border-top: var(--stroke-hair) solid var(--line);
 }
 
-.row:first-child {
-  padding-top: 0;
-  border-top: 0;
-}
-
 .marker {
   flex: none;
   color: var(--ink-faint);

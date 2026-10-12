@@ -14,7 +14,7 @@ export function HeroPanel({ hero }: HeroPanelProps) {
       <PanelHeader index="01" label="About" readout="NYC / ASTORIA" className={styles.header} />
       <h1 id="hero" className={`t-display ${styles.headline}`}>
         {hero.headline}
-        <span aria-hidden="true" className={`mono ${styles.cursor}`}>
+        <span aria-hidden="true" className={styles.cursor}>
           ▌
         </span>
       </h1>

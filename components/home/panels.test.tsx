@@ -113,6 +113,7 @@ describe("LogPanel", () => {
     expect(screen.getAllByRole("listitem")).toHaveLength(2);
     expect(screen.getByRole("link", { name: /First/ })).toHaveAttribute("href", "/log/one");
     expect(screen.getByRole("link", { name: /Second/ })).toHaveAttribute("href", "/log/two");
+    expect(screen.getAllByText("2026-01-02")[0]).toHaveAttribute("datetime", "2026-01-02");
     expect(screen.getByText("Backend")).toBeInTheDocument();
     expect(screen.queryByText("Django")).not.toBeInTheDocument();
   });

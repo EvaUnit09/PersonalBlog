@@ -35,7 +35,7 @@ export function LogPanel({ posts }: LogPanelProps) {
             <li key={post.slug} className="span-4">
               <Link href={`/log/${post.slug}`} className={styles.card}>
                 <span className={`t-readout ${styles.meta}`}>
-                  {post.date} · <span className={styles.category}>{post.tags[0]}</span>
+                  <time dateTime={post.date}>{post.date}</time> · <span className={styles.category}>{post.tags[0]}</span>
                 </span>
                 <span className={`t-h3 ${styles.title}`}>{post.title}</span>
                 <span className={`t-body-sm ${styles.excerpt}`}>{post.excerpt}</span>

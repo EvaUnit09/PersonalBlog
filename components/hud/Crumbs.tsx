@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { ReadoutBar } from "./Readout";
 
 interface CrumbsProps {
@@ -6,7 +7,7 @@ interface CrumbsProps {
   /** Text after the arrow, e.g. "ALL PROJECTS". */
   backLabel: string;
   /** Readouts after the back link, joined by "·". */
-  items: readonly string[];
+  items: readonly ReactNode[];
   className?: string;
 }
 

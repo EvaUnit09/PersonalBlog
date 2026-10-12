@@ -31,7 +31,7 @@ export function LogIndexPanel({ posts }: LogIndexPanelProps) {
                 <>
                   LOG #{padIndex(post.number)}
                   <br />
-                  {post.date}
+                  <time dateTime={post.date}>{post.date}</time>
                 </>
               }
               title={

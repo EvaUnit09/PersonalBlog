@@ -39,6 +39,7 @@ describe("LogIndexPanel", () => {
     expect(rows[0]).toHaveTextContent("Excerpt new");
     expect(rows[0]).toHaveTextContent("[Backend]");
     expect(rows[1]).toHaveTextContent("LOG #01");
+    expect(within(rows[0]!).getByText("2026-02-01")).toHaveAttribute("datetime", "2026-02-01");
   });
 });
 
@@ -52,6 +53,12 @@ describe("LogPostView", () => {
       "◂ ALL ENTRIES · 04 / LOG #04 · 2026-10-11 · 3 MIN READ",
     );
     expect(screen.getByRole("link", { name: "◂ ALL ENTRIES" })).toHaveAttribute("href", "/log");
+  });
+
+  it("marks the post date up as a machine-readable time", () => {
+    render(<LogPostView post={post("a", { date: "2026-03-04" })} neighbors={NO_NEIGHBORS} body={null} />);
+
+    expect(screen.getByText("2026-03-04")).toHaveAttribute("datetime", "2026-03-04");
   });
 
   it("renders the title as h1, the excerpt as lede, the body, and the tags both above and below", () => {

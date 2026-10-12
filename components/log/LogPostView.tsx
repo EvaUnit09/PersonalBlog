@@ -22,7 +22,7 @@ export function LogPostView({ post, neighbors, body }: LogPostViewProps) {
       <Crumbs
         backHref="/log"
         backLabel="ALL ENTRIES"
-        items={[`04 / LOG #${padIndex(post.number)}`, post.date, `${post.readingMinutes} MIN READ`]}
+        items={[`04 / LOG #${padIndex(post.number)}`, <time key="date" dateTime={post.date}>{post.date}</time>, `${post.readingMinutes} MIN READ`]}
         className={styles.crumbs}
       />
       <TagList tags={post.tags} label="Topics" className={styles.topTags} />

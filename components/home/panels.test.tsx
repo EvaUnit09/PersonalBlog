@@ -1,6 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import type { ExperienceEntry, LogEntry, Status } from "@/content/home";
+import type { ExperienceEntry, Status } from "@/content/home";
+import type { Post } from "@/lib/content/log";
 import { EXPERIENCE, HERO, STACK, STATUS } from "@/content/home";
 import { ExperiencePanel } from "./ExperiencePanel";
 import { HeroPanel } from "./HeroPanel";
@@ -92,30 +93,40 @@ describe("StackPanel", () => {
 });
 
 describe("LogPanel", () => {
-  const entries: LogEntry[] = [
-    { slug: "one", date: "2026-01-02", category: "BACKEND", title: "First", excerpt: "Ex one" },
-    { slug: "two", date: "2026-02-03", category: "AGENTS", title: "Second", excerpt: "Ex two" },
-  ];
+  function post(slug: string, title: string, tags: string[]): Post {
+    return { slug, title, tags, date: "2026-01-02", excerpt: `Ex ${slug}`, body: "", number: 1, readingMinutes: 1 };
+  }
+
+  const posts = [post("one", "First", ["Backend", "Django"]), post("two", "Second", ["Agents"])];
 
   it("shows an empty state and no cards when there are no entries", () => {
-    render(<LogPanel entries={[]} />);
+    render(<LogPanel posts={[]} />);
 
     expect(screen.getByText("NO ENTRIES YET")).toBeInTheDocument();
     expect(screen.queryAllByRole("listitem")).toHaveLength(0);
   });
 
   it("shows a card per entry linking to its post, without the empty state", () => {
-    render(<LogPanel entries={entries} />);
+    render(<LogPanel posts={posts} />);
 
     expect(screen.queryByText("NO ENTRIES YET")).not.toBeInTheDocument();
     expect(screen.getAllByRole("listitem")).toHaveLength(2);
     expect(screen.getByRole("link", { name: /First/ })).toHaveAttribute("href", "/log/one");
     expect(screen.getByRole("link", { name: /Second/ })).toHaveAttribute("href", "/log/two");
-    expect(screen.getByText("BACKEND")).toBeInTheDocument();
+    expect(screen.getByText("Backend")).toBeInTheDocument();
+    expect(screen.queryByText("Django")).not.toBeInTheDocument();
+  });
+
+  it("shows only the three newest posts", () => {
+    const many = ["a", "b", "c", "d"].map((slug) => post(slug, `Title ${slug}`, ["Tag"]));
+    render(<LogPanel posts={many} />);
+
+    expect(screen.getAllByRole("listitem")).toHaveLength(3);
+    expect(screen.queryByText("Title d")).not.toBeInTheDocument();
   });
 
   it("always links to the full log", () => {
-    render(<LogPanel entries={[]} />);
+    render(<LogPanel posts={[]} />);
 
     expect(screen.getByRole("link", { name: /ALL ENTRIES/ })).toHaveAttribute("href", "/log");
     expect(screen.getByRole("region", { name: "Log" })).toHaveAttribute("id", "log");

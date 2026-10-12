@@ -1,4 +1,5 @@
-import { PROJECT_STATUS_LABEL, type Project } from "@/content/home";
+import type { ProjectList } from "@/lib/content/projects";
+import { PROJECT_STATUS_LABEL } from "@/lib/content/schema";
 import { Button } from "@/components/hud/Button";
 import { Panel } from "@/components/hud/Panel";
 import { PanelHeader } from "@/components/hud/PanelHeader";
@@ -7,7 +8,7 @@ import { padIndex } from "@/lib/padIndex";
 import styles from "./FeaturedPanel.module.css";
 
 interface FeaturedPanelProps {
-  projects: readonly [Project, ...Project[]];
+  projects: ProjectList;
 }
 
 export function FeaturedPanel({ projects }: FeaturedPanelProps) {

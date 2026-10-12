@@ -20,6 +20,7 @@ ul.entries {
 
 .category {
   color: var(--cyan);
+  text-transform: uppercase;
 }
 
 .title {

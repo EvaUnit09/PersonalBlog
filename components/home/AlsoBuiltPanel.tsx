@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Project } from "@/content/home";
+import type { ProjectList } from "@/lib/content/projects";
 import { ListRow } from "@/components/hud/ListRow";
 import { Panel } from "@/components/hud/Panel";
 import { PanelHeader } from "@/components/hud/PanelHeader";
@@ -9,7 +9,7 @@ import shared from "./shared.module.css";
 
 interface AlsoBuiltPanelProps {
   /** Every project, featured first. The featured one is skipped here. */
-  projects: readonly [Project, ...Project[]];
+  projects: ProjectList;
 }
 
 export function AlsoBuiltPanel({ projects }: AlsoBuiltPanelProps) {

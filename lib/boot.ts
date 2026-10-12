@@ -19,7 +19,7 @@ export const BOOT_STORAGE_KEY = "boot-seen";
 export const BOOT_SEEN = "1";
 export const BOOT_PENDING = "pending";
 export const BOOT_TIMING: BootTiming = { budgetMs: 1400 };
-/** Time the finished log stays up so the last line can be read. */
+/** Pause between the last typed character and the overlay lifting. */
 export const BOOT_HOLD_MS = 100;
 
 const SEPARATOR = " ... ";

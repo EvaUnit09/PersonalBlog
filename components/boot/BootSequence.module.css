@@ -2,7 +2,10 @@
   display: none;
 }
 
-/* Below the z-index 100 scanline layer so the overlay reads as part of the same screen. */
+/*
+ * Covers the page rather than hiding it, so page content stays a largest-contentful-paint candidate
+ * during the boot. Below the z-index 100 scanline layer so the overlay reads as part of the same screen.
+ */
 :global(html[data-boot="pending"]) .overlay {
   display: flex;
   position: fixed;

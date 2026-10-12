@@ -1,0 +1,22 @@
+.tags {
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  margin: 0;
+}
+
+.lede {
+  max-width: 640px;
+  margin: 20px 0 0;
+  font-size: 20px;
+  line-height: 30px;
+  color: var(--ink-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: 28px;
+}

@@ -188,8 +188,8 @@ returningVisit.describe("decrypt", () => {
     await probeDecryptFrame(page);
     await page.goto("/");
     const panel = page.getByRole("region", { name: "Log" });
-    const label = page.locator(`[id="${await panel.getAttribute("aria-labelledby")}"]`);
     const labelId = await panel.getAttribute("aria-labelledby");
+    const label = page.locator(`[id="${labelId}"]`);
     const frame = label.locator("[data-decrypt-frame]");
     await expect(label).not.toBeInViewport();
     expect(await framedLabels(page)).not.toContain(labelId);

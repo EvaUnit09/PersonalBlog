@@ -13,7 +13,7 @@
   padding: var(--space-8);
   background: var(--bg-000);
   color: var(--ink);
-  /* Failsafe partner of the page reveal in app/layout.module.css. */
+  /* CSS-only failsafe: uncovers the page if the JS bundle never ends the boot. */
   animation: failsafe-hide 0s linear 2s forwards;
 }
 

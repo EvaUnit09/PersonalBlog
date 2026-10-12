@@ -14,17 +14,9 @@
 }
 
 /*
- * Failsafe: the pre-paint script hides the page for the boot, and only the JS bundle un-hides it.
- * If that bundle never runs, this CSS-only timer reveals the page at 2s (just past the 1.5s boot)
- * and the overlay hides itself on the same clock, so the page can never stay blank.
+ * The shell stays rendered and visible to the browser during the boot so its content can be an LCP
+ * candidate right away. The opaque overlay (components/boot/BootSequence.module.css) is the cover:
+ * it is server-rendered and shown by CSS keyed on the pre-paint data-boot flag, so the page never
+ * flashes before it. Its own CSS timer hides it at 2s (just past the 1.5s boot), so even if the JS
+ * bundle never runs the page cannot stay covered.
  */
-:global(html[data-boot="pending"]) .shell {
-  visibility: hidden;
-  animation: failsafe-reveal 0s linear 2s forwards;
-}
-
-@keyframes failsafe-reveal {
-  to {
-    visibility: visible;
-  }
-}

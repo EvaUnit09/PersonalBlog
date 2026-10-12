@@ -27,7 +27,7 @@ export function LogPostView({ post, neighbors, body }: LogPostViewProps) {
       />
       <TagList tags={post.tags} label="Topics" className={styles.topTags} />
       <h1 className={`t-display ${styles.title}`}>{post.title}</h1>
-      <p className={styles.lede}>{post.excerpt}</p>
+      <p className="t-lede">{post.excerpt}</p>
       <article aria-label={`${post.title} text`} className={styles.body}>
         {body}
       </article>

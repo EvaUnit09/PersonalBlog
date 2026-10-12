@@ -91,6 +91,7 @@ a:hover {
 .t-index { font-family: var(--font-mono); font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; }
 .t-readout { font-family: var(--font-mono); font-size: 12px; line-height: 16px; font-weight: 400; letter-spacing: 0.04em; }
 .t-tag { font-family: var(--font-mono); font-size: 11px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+.t-lede { font-family: var(--font-sans); font-size: 20px; line-height: 30px; font-weight: 400; color: var(--ink-muted); margin: 20px 0 0; }
 .t-code { font-family: var(--font-mono); font-size: 14px; line-height: 22px; font-weight: 400; }
 
 @media (max-width: 720px) {

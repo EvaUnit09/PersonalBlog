@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures";
 
 const PANEL_NAMES_IN_ORDER = [
   { role: "region", name: /Backend engineer/ },

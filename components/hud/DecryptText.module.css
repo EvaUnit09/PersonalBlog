@@ -1,0 +1,15 @@
+.root {
+  position: relative;
+}
+
+.masked {
+  color: transparent;
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  white-space: pre;
+  color: var(--ink);
+  font-family: var(--font-mono);
+}

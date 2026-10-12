@@ -11,6 +11,8 @@ function project(slug: string, overrides: Partial<Project> = {}): Project {
     summary: `Summary ${slug}`,
     tags: [`Tag ${slug}`],
     order: 1,
+    links: {},
+    spec: [],
     body: "",
     status: "shipped",
     ...overrides,

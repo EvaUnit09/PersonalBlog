@@ -7,7 +7,7 @@ import type { ProjectFrontmatter } from "./schema";
 function entry(slug: string, order: number): Entry<ProjectFrontmatter> {
   return {
     slug,
-    data: { title: slug, summary: `${slug} summary`, tags: ["Tag"], status: "shipped", order },
+    data: { title: slug, summary: `${slug} summary`, tags: ["Tag"], status: "shipped", order, links: {}, spec: [] },
     body: `${slug} body`,
   };
 }

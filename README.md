@@ -14,6 +14,12 @@ Next.js (App Router) + TypeScript, deployed on Vercel. Design source of truth li
 | `npm test` | Vitest unit tests (`test:watch`, `test:coverage` for 80% gate) |
 | `npm run test:e2e` | Playwright at 1440px and 390px (builds and serves on :3100) |
 
+## Environment
+
+`SITE_URL` (optional locally) sets the canonical origin used by metadata, the sitemap and the feed. On Vercel
+production it falls back to `VERCEL_PROJECT_PRODUCTION_URL`, and the build fails if neither is set; previews use
+`VERCEL_URL`, and local builds use `http://localhost:3000`.
+
 ## Layout
 
 - `app/` routes, root layout, `fonts.ts` (self-hosted Archivo + JetBrains Mono)

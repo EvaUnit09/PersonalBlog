@@ -1,6 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import type { Project } from "@/content/home";
+import type { Project, ProjectList } from "@/lib/content/projects";
 import { AlsoBuiltPanel } from "./AlsoBuiltPanel";
 import { FeaturedPanel } from "./FeaturedPanel";
 
@@ -10,12 +10,14 @@ function project(slug: string, overrides: Partial<Project> = {}): Project {
     title: `Title ${slug}`,
     summary: `Summary ${slug}`,
     tags: [`Tag ${slug}`],
+    order: 1,
+    body: "",
     status: "shipped",
     ...overrides,
   };
 }
 
-const PROJECTS: readonly [Project, ...Project[]] = [
+const PROJECTS: ProjectList = [
   project("alpha", { status: "in-progress" }),
   project("beta"),
   project("gamma"),

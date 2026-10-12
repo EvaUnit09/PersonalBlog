@@ -1,18 +1,3 @@
-export type ProjectStatus = "in-progress" | "shipped";
-
-export const PROJECT_STATUS_LABEL: Record<ProjectStatus, string> = {
-  "in-progress": "IN PROGRESS",
-  shipped: "SHIPPED",
-};
-
-export interface Project {
-  slug: string;
-  title: string;
-  summary: string;
-  tags: readonly string[];
-  status: ProjectStatus;
-}
-
 export interface ExperienceEntry {
   start: string;
   /** Omitted for the current role, rendered as "NOW". */
@@ -60,39 +45,6 @@ export const STATUS = {
   coordinates: "40.7644 / -73.9235",
   previous: "BBC STUDIOS NY",
 } as const satisfies Status;
-
-/** The first project is the featured one. The tuple type guarantees it exists. */
-export const PROJECTS: readonly [Project, ...Project[]] = [
-  {
-    slug: "nightcap",
-    title: "Nightcap",
-    summary:
-      "An AI planner for date and hangout nights in NYC. Tell it the vibe and the budget, get a route of places that fit.",
-    tags: ["FastAPI", "Postgres", "React", "AI agents"],
-    status: "in-progress",
-  },
-  {
-    slug: "foodsy",
-    title: "Foodsy",
-    summary: "Full-stack food app, end to end.",
-    tags: ["Full-stack"],
-    status: "in-progress",
-  },
-  {
-    slug: "opsagent",
-    title: "OpsAgent",
-    summary: "AI agent orchestration for ops workflows.",
-    tags: ["Agents"],
-    status: "in-progress",
-  },
-  {
-    slug: "ticketing",
-    title: "Ticketing practice build",
-    summary: "Ticketmaster-style system design exercise.",
-    tags: ["Django", "React"],
-    status: "in-progress",
-  },
-];
 
 // PLACEHOLDER: years are user-supplied (see docs/design-handoff/README.md).
 export const EXPERIENCE: readonly ExperienceEntry[] = [

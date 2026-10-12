@@ -5,15 +5,18 @@ import { HeroPanel } from "@/components/home/HeroPanel";
 import { LogPanel } from "@/components/home/LogPanel";
 import { StackPanel } from "@/components/home/StackPanel";
 import { StatusPanel } from "@/components/home/StatusPanel";
-import { EXPERIENCE, HERO, LOG_ENTRIES, PROJECTS, STACK, STATUS } from "@/content/home";
+import { EXPERIENCE, HERO, LOG_ENTRIES, STACK, STATUS } from "@/content/home";
+import { getProjects } from "@/lib/content/projects";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const projects = await getProjects();
+
   return (
     <main className="grid">
       <HeroPanel hero={HERO} />
       <StatusPanel status={STATUS} />
-      <FeaturedPanel projects={PROJECTS} />
-      <AlsoBuiltPanel projects={PROJECTS} />
+      <FeaturedPanel projects={projects} />
+      <AlsoBuiltPanel projects={projects} />
       <ExperiencePanel entries={EXPERIENCE} />
       <StackPanel stack={STACK} />
       <LogPanel entries={LOG_ENTRIES} />

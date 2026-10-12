@@ -4,9 +4,11 @@ import styles from "./PanelHeader.module.css";
 
 const UNNUMBERED = "//";
 
+/** "01".."04" for numbered sections, or "//" for side panels. */
+export type PanelIndex = typeof UNNUMBERED | `0${1 | 2 | 3 | 4}`;
+
 interface PanelHeaderProps {
-  /** "01".."04" for numbered sections, or "//" for side panels. */
-  index: string;
+  index: PanelIndex;
   label: ReactNode;
   /** id for the label, so the parent panel can use aria-labelledby. */
   labelId?: string;

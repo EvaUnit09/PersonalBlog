@@ -19,10 +19,9 @@
 .bl { bottom: 0; left: 0; border-right: 0; border-top: 0; }
 .br { bottom: 0; right: 0; border-left: 0; border-top: 0; }
 
-/* Brackets react to whatever box they sit in: hover or keyboard focus inside it. */
+/* Corners light up when the box they sit in is hovered or has focus within it (pointer or keyboard). */
 :hover > .brackets .corner,
-:focus-within > .brackets .corner,
-.active .corner {
+:focus-within > .brackets .corner {
   border-color: var(--accent-text);
 }
 

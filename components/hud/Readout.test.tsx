@@ -13,6 +13,32 @@ describe("ReadoutRow", () => {
     expect(screen.getByRole("term")).toHaveTextContent("Role");
     expect(screen.getByRole("definition")).toHaveTextContent("Backend / Full-stack");
   });
+
+  it("puts the accent modifier on the value only", () => {
+    const { container } = render(
+      <dl>
+        <ReadoutRow label="Build" value="Passing" />
+        <ReadoutRow label="Build" value="Passing" isAccent />
+      </dl>,
+    );
+    const [plainTerm, accentTerm] = container.querySelectorAll("dt");
+    const [plainValue, accentValue] = container.querySelectorAll("dd");
+
+    expect(accentValue.classList.length).toBe(plainValue.classList.length + 1);
+    expect(accentTerm.className).toBe(plainTerm.className);
+  });
+
+  it("adds the ruled modifier to the row", () => {
+    const { container } = render(
+      <dl>
+        <ReadoutRow label="A" value="1" />
+        <ReadoutRow label="B" value="2" isRuled />
+      </dl>,
+    );
+    const [plain, ruled] = container.querySelectorAll("dl > div");
+
+    expect(ruled.classList.length).toBe(plain.classList.length + 1);
+  });
 });
 
 describe("ReadoutBar", () => {

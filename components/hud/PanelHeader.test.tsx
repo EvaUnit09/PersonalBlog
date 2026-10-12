@@ -26,4 +26,16 @@ describe("PanelHeader", () => {
 
     expect(container.querySelector("[data-readout]")).toBeNull();
   });
+
+  it("separates a numbered index from its label with a slash", () => {
+    const { container } = render(<PanelHeader index="01" label="About" />);
+
+    expect(container).toHaveTextContent(/^01 \/ About$/);
+  });
+
+  it("drops the slash for the unnumbered // index", () => {
+    const { container } = render(<PanelHeader index="//" label="Status" />);
+
+    expect(container).toHaveTextContent(/^\/\/ Status$/);
+  });
 });

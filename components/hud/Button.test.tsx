@@ -42,4 +42,40 @@ describe("Button", () => {
 
     expect(screen.getByRole("link")).toHaveAttribute("rel", "noopener noreferrer");
   });
+
+  it("treats protocol-relative hrefs as external", () => {
+    render(<Button href="//example.org">Elsewhere</Button>);
+
+    expect(screen.getByRole("link")).toHaveAttribute("href", "//example.org");
+    expect(screen.getByRole("link").dataset.external).toBe("true");
+  });
+
+  it("marks only hrefs starting with a single slash as internal", () => {
+    render(<Button href="/log">Log</Button>);
+
+    expect(screen.getByRole("link").dataset.external).toBeUndefined();
+  });
+
+  it("keeps a caller's rel when the link opens in the same tab", () => {
+    render(<Button href="https://github.com/x" rel="me">GitHub</Button>);
+
+    expect(screen.getByRole("link")).toHaveAttribute("rel", "me");
+  });
+
+  it("lets callers override type and merges className with the base classes", () => {
+    render(<Button type="submit" className="extra">Send</Button>);
+
+    const button = screen.getByRole("button");
+    expect(button).toHaveAttribute("type", "submit");
+    expect(button).toHaveClass("extra", "t-index");
+  });
+
+  it("does not fire onClick when disabled", async () => {
+    const onClick = vi.fn();
+    render(<Button disabled onClick={onClick}>Skip</Button>);
+
+    await userEvent.click(screen.getByRole("button"));
+
+    expect(onClick).not.toHaveBeenCalled();
+  });
 });

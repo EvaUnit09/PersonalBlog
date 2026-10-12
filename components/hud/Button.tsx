@@ -23,7 +23,11 @@ function isLinkAttrs(attrs: LinkAttrs | NativeAttrs): attrs is LinkAttrs {
   return typeof attrs.href === "string";
 }
 
-/** Renders a link when given an href, otherwise a native button. */
+/**
+ * Renders next/link for site-relative hrefs ("/log"), a plain <a> for everything
+ * else (https:, mailto:, protocol-relative "//host"), or a native <button> when
+ * no href is given. target="_blank" always gets rel="noopener noreferrer".
+ */
 export function Button({ variant = "primary", className, children, ...attrs }: ButtonProps) {
   const shared = {
     className: cx(styles.button, styles[variant], "t-index", className),
@@ -39,14 +43,14 @@ export function Button({ variant = "primary", className, children, ...attrs }: B
   }
 
   const rel = attrs.target === "_blank" ? "noopener noreferrer" : attrs.rel;
-  const isInternal = attrs.href.startsWith("/");
+  const isInternal = attrs.href.startsWith("/") && !attrs.href.startsWith("//");
 
   return isInternal ? (
     <Link {...attrs} rel={rel} {...shared}>
       {children}
     </Link>
   ) : (
-    <a {...attrs} rel={rel} {...shared}>
+    <a {...attrs} rel={rel} data-external="true" {...shared}>
       {children}
     </a>
   );

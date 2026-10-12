@@ -15,7 +15,7 @@ interface ReadoutRowProps {
 export function ReadoutRow({ label, value, isRuled = false, isAccent = false }: ReadoutRowProps) {
   return (
     <div className={cx(styles.row, "t-readout", isRuled && styles.ruled)}>
-      <dt className={styles.label}>{label}</dt>
+      <dt>{label}</dt>
       <dd className={cx(styles.value, isAccent && styles.accent)}>{value}</dd>
     </div>
   );
@@ -23,17 +23,16 @@ export function ReadoutRow({ label, value, isRuled = false, isAccent = false }: 
 
 interface ReadoutBarProps {
   items: readonly ReactNode[];
-  className?: string;
 }
 
 /** A row of readouts in ink-faint separated by "·". */
-export function ReadoutBar({ items, className }: ReadoutBarProps) {
+export function ReadoutBar({ items }: ReadoutBarProps) {
   if (items.length === 0) {
     return null;
   }
 
   return (
-    <p className={cx(styles.bar, "t-readout", className)}>
+    <p className={cx(styles.bar, "t-readout")}>
       {items.map((item, i) => (
         <span key={i}>
           {i > 0 && <span aria-hidden="true"> · </span>}

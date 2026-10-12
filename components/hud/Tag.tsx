@@ -3,12 +3,11 @@ import styles from "./Tag.module.css";
 
 interface TagProps {
   label: string;
-  className?: string;
 }
 
 /** Bracketed, uppercase mono stack tag: [DJANGO]. */
-export function Tag({ label, className }: TagProps) {
-  return <span className={cx(styles.tag, "t-tag", className)}>[{label}]</span>;
+export function Tag({ label }: TagProps) {
+  return <span className={cx(styles.tag, "t-tag")}>[{label}]</span>;
 }
 
 interface TagListProps {

@@ -17,7 +17,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
       <h1 id="project-title" className={`t-display ${styles.title}`}>
         {project.title}
       </h1>
-      <p className={styles.lede}>{project.summary}</p>
+      <p className={`t-lede ${styles.lede}`}>{project.summary}</p>
       {(demo !== undefined || source !== undefined) && (
         <div className={styles.actions}>
           {demo !== undefined && <Button href={demo}>▸ Live demo</Button>}

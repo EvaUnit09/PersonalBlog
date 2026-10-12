@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { getSiteOrigin } from "@/lib/site-url";
 import { themeInitScript } from "@/lib/theme";
 import { archivo, jetbrainsMono } from "./fonts";
 import "./globals.css";
 import styles from "./layout.module.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteOrigin()),
   title: {
     default: "Noah Decaille",
     template: "Noah Decaille: %s",

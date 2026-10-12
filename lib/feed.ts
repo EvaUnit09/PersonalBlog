@@ -1,3 +1,5 @@
+import { absoluteUrl } from "./site-url";
+
 export interface FeedPost {
   slug: string;
   title: string;
@@ -32,7 +34,7 @@ export function toRfc822(day: string): string {
 }
 
 function item(origin: string, post: FeedPost): string {
-  const link = escapeXml(`${origin}/log/${post.slug}`);
+  const link = escapeXml(absoluteUrl(`/log/${post.slug}`, origin));
   return [
     "    <item>",
     `      <title>${escapeXml(post.title)}</title>`,
@@ -50,7 +52,7 @@ export function buildFeed({ origin, title, description, posts }: FeedInput): str
     '<rss version="2.0">',
     "  <channel>",
     `    <title>${escapeXml(title)}</title>`,
-    `    <link>${escapeXml(`${origin}/log`)}</link>`,
+    `    <link>${escapeXml(absoluteUrl("/log", origin))}</link>`,
     `    <description>${escapeXml(description)}</description>`,
     "    <language>en</language>",
     ...posts.map((post) => item(origin, post)),

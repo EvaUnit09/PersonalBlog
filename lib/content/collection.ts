@@ -5,7 +5,7 @@ import yaml from "js-yaml";
 import { z } from "zod";
 
 const MDX_EXTENSION = ".mdx";
-const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+export const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 // The YAML 1.2 core schema has no timestamp type, so dates reach zod as the exact string the author wrote.
 // The default schema turns 2026-02-30 into a Date that silently rolls over to March 2.

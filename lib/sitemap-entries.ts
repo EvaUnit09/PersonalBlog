@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { absoluteUrl } from "./site-url";
 
 export interface SitemapInput {
   origin: string;
@@ -8,7 +9,7 @@ export interface SitemapInput {
 
 export function buildSitemap({ origin, projects, posts }: SitemapInput): MetadataRoute.Sitemap {
   const page = (path: string, lastModified?: string) => ({
-    url: `${origin}${path}`,
+    url: absoluteUrl(path, origin),
     ...(lastModified !== undefined && { lastModified }),
   });
 

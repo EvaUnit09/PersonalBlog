@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { SLUG_PATTERN } from "./content/collection";
 import { PLACEHOLDER_SLUG, slugParams } from "./static-params";
 
 describe("slugParams", () => {
@@ -13,6 +14,6 @@ describe("slugParams", () => {
   });
 
   it("uses a placeholder the content loader could never accept as a filename slug", () => {
-    expect(PLACEHOLDER_SLUG).not.toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+    expect(PLACEHOLDER_SLUG).not.toMatch(SLUG_PATTERN);
   });
 });

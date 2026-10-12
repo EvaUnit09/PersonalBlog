@@ -22,4 +22,12 @@ describe("absoluteUrl", () => {
   it("maps the root path to the bare origin with a trailing slash", () => {
     expect(absoluteUrl("/", "https://noah.dev")).toBe("https://noah.dev/");
   });
+
+  it("tolerates a trailing slash on the origin", () => {
+    expect(absoluteUrl("/log/a", "https://noah.dev/")).toBe("https://noah.dev/log/a");
+  });
+
+  it("tolerates a path without a leading slash", () => {
+    expect(absoluteUrl("log/a", "https://noah.dev")).toBe("https://noah.dev/log/a");
+  });
 });

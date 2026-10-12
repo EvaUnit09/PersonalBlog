@@ -8,6 +8,7 @@ export function getSiteOrigin(env: Env = process.env): string {
   return host ? `https://${host}` : LOCAL_ORIGIN;
 }
 
+/** Joins by string so a path that is already rooted never resets the origin's own path, and slashes at the seam never double. */
 export function absoluteUrl(path: string, origin: string = getSiteOrigin()): string {
-  return new URL(path, origin).toString();
+  return `${origin.replace(/\/+$/, "")}/${path.replace(/^\/+/, "")}`;
 }

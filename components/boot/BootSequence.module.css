@@ -13,7 +13,11 @@
   padding: var(--space-8);
   background: var(--bg-000);
   color: var(--ink);
-  /* CSS-only failsafe: uncovers the page if the JS bundle never ends the boot. */
+  /*
+   * CSS-only failsafe: uncovers the page if the JS bundle never ends the boot. Its delay must stay
+   * longer than the boot's typing budget plus hold (lib/boot.ts), or it would cut the log short;
+   * components/boot/failsafe.test.ts enforces that.
+   */
   animation: failsafe-hide 0s linear 2s forwards;
 }
 

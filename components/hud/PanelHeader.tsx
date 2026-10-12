@@ -4,8 +4,8 @@ import styles from "./PanelHeader.module.css";
 
 const UNNUMBERED = "//";
 
-/** "01".."04" for numbered sections, or "//" for side panels. */
-export type PanelIndex = typeof UNNUMBERED | `0${1 | 2 | 3 | 4}`;
+/** "01".."05" for numbered sections, or "//" for side panels. */
+export type PanelIndex = typeof UNNUMBERED | `0${1 | 2 | 3 | 4 | 5}`;
 
 interface PanelHeaderProps {
   index: PanelIndex;

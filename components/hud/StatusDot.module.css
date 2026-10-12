@@ -1,0 +1,16 @@
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: var(--space-2);
+  border-radius: var(--radius-full);
+}
+
+.accent {
+  background: var(--accent);
+  box-shadow: var(--glow-accent);
+}
+
+.warn {
+  background: var(--warn);
+}

@@ -29,6 +29,11 @@ export interface Hero {
   lede: string;
 }
 
+export interface Stack {
+  daily: readonly string[];
+  learning: readonly string[];
+}
+
 export interface Status {
   isOpenToWork: boolean;
   role: string;
@@ -114,6 +119,6 @@ export const EXPERIENCE: readonly ExperienceEntry[] = [
 export const STACK = {
   daily: ["Python", "Django", "FastAPI", "PostgreSQL", "TypeScript", "React"],
   learning: ["Agent observability", "System design"],
-} as const satisfies { daily: readonly string[]; learning: readonly string[] };
+} as const satisfies Stack;
 
 export const LOG_ENTRIES: readonly LogEntry[] = [];

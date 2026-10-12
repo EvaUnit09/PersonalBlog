@@ -13,7 +13,6 @@ interface ListRowProps {
   children?: ReactNode;
 }
 
-/** One row of a ranked or timeline list. Render inside an <ol> or <ul>. */
 export function ListRow({ marker, markerSize = "index", title, summary, children }: ListRowProps) {
   return (
     <li className={styles.row}>

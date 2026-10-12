@@ -7,7 +7,6 @@ import { padIndex } from "@/lib/padIndex";
 import styles from "./FeaturedPanel.module.css";
 
 interface FeaturedPanelProps {
-  /** The first project is featured. */
   projects: readonly [Project, ...Project[]];
 }
 

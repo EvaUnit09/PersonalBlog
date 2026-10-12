@@ -31,6 +31,6 @@ describe("toProjectList", () => {
   ])("rejects order with %s", (_, orders) => {
     const entries = orders.map((order, i) => entry(`p${i}`, order));
 
-    expect(() => toProjectList(entries)).toThrow(/order/);
+    expect(() => toProjectList(entries)).toThrow(/^Project order must run 1\.\.2/);
   });
 });

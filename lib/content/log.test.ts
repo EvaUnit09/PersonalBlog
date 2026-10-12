@@ -36,6 +36,14 @@ describe("toPostList", () => {
     expect(long?.readingMinutes).toBe(3);
   });
 
+  it("counts prose only, not code samples or MDX syntax", () => {
+    const code = Array(900).fill("x").join(" ");
+    const body = `import { Note } from "./note";\n\n## Heading\n\n<Note kind="tip">Read this.</Note>\n\n\`\`\`python\n${code}\n\`\`\`\n`;
+    const [post] = toPostList([entry("code", "2026-01-01", body)]);
+
+    expect(post?.readingMinutes).toBe(1);
+  });
+
   it("returns an empty list when there are no posts", () => {
     expect(toPostList([])).toEqual([]);
   });

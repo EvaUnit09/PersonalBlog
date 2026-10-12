@@ -1,5 +1,6 @@
 // @vitest-environment node
 import matter from "gray-matter";
+import { FRONTMATTER_OPTIONS } from "./collection";
 import { describe, expect, it } from "vitest";
 import type { z } from "zod";
 import { logFrontmatter, projectFrontmatter } from "./schema";
@@ -8,7 +9,7 @@ const PROJECT = "title: Nightcap\nsummary: S\ntags: [FastAPI]\nstatus: in-progre
 const POST = "title: Splitting settings\nexcerpt: E\ntags: [Backend]";
 
 function parse<S extends z.ZodType>(schema: S, yaml: string) {
-  return schema.safeParse(matter(`---\n${yaml}\n---\n`).data);
+  return schema.safeParse(matter(`---\n${yaml}\n---\n`, FRONTMATTER_OPTIONS).data);
 }
 
 describe("dates", () => {
@@ -21,8 +22,13 @@ describe("dates", () => {
     expect(result.success && result.data.date).toBe("2026-10-11");
   });
 
-  it("rejects a date that is not a calendar day", () => {
-    expect(parse(logFrontmatter, `${POST}\ndate: "11/10/2026"`).success).toBe(false);
+  it.each([
+    ["a non-ISO format", 'date: "11/10/2026"'],
+    ["an impossible day, unquoted", "date: 2026-02-30"],
+    ["an impossible day, quoted", 'date: "2026-02-30"'],
+    ["a timestamp", "date: 2026-10-11T23:30:00-05:00"],
+  ])("rejects %s instead of shifting it to another day", (_, line) => {
+    expect(parse(logFrontmatter, `${POST}\n${line}`).success).toBe(false);
   });
 });
 
@@ -46,6 +52,10 @@ describe("projectFrontmatter", () => {
     expect(parse(projectFrontmatter, `${PROJECT}\nlinks: { source: "https://github.com/x/y" }`).success).toBe(true);
     expect(parse(projectFrontmatter, `${PROJECT}\nlinks: { demo: "http://example.dev" }`).success).toBe(false);
     expect(parse(projectFrontmatter, `${PROJECT}\nlinks: { demo: "javascript:alert(1)" }`).success).toBe(false);
+  });
+
+  it.each(["https:x.com", "https:/x", "HTTPS://x.com", "https://localhost"])("rejects the malformed link %s", (url) => {
+    expect(parse(projectFrontmatter, `${PROJECT}\nlinks: { demo: "${url}" }`).success).toBe(false);
   });
 });
 

@@ -44,6 +44,12 @@ describe("loadCollection", () => {
     await expect(loadCollection(dir, schema)).rejects.toThrow(/Bad Name\.mdx/);
   });
 
+  it("rejects an uppercase extension instead of skipping the file", async () => {
+    await writeFile(join(dir, "nightcap.MDX"), mdx("title: X\norder: 1"));
+
+    await expect(loadCollection(dir, schema)).rejects.toThrow(/nightcap\.MDX/);
+  });
+
   it("does not descend into subdirectories", async () => {
     await mkdir(join(dir, "drafts"));
     await writeFile(join(dir, "drafts", "wip.mdx"), mdx("title: WIP\norder: 2"));

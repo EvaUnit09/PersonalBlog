@@ -8,14 +8,10 @@ export const PROJECT_STATUS_LABEL: Record<ProjectStatus, string> = {
   shipped: "SHIPPED",
 };
 
-const ISO_DAY_LENGTH = "YYYY-MM-DD".length;
+/** YYYY-MM-DD, quoted or not; FRONTMATTER_OPTIONS keeps YAML from turning it into a Date first. */
+const calendarDay = z.iso.date();
 
-// YAML parses an unquoted 2026-10-11 into a Date and a quoted one into a string; accept both, emit one form.
-const calendarDay = z
-  .union([z.date(), z.iso.date()])
-  .transform((day) => (typeof day === "string" ? day : day.toISOString().slice(0, ISO_DAY_LENGTH)));
-
-const httpsUrl = z.url({ protocol: /^https$/ });
+const httpsUrl = z.url({ protocol: /^https$/, hostname: z.regexes.domain }).regex(/^https:\/\//);
 
 const tagList = z.array(z.string().min(1)).min(1);
 

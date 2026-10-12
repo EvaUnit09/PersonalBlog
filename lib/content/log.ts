@@ -14,8 +14,16 @@ export interface Post extends LogFrontmatter {
   readingMinutes: number;
 }
 
+const NON_PROSE = [
+  /^```[\s\S]*?^```/gm, // fenced code samples
+  /^(?:import|export)\s.*$/gm, // MDX module lines
+  /<[^>]+>/g, // JSX tags
+];
+const HAS_LETTER_OR_DIGIT = /[\p{L}\p{N}]/u;
+
 function readingMinutes(body: string): number {
-  const words = body.split(/\s+/).filter(Boolean).length;
+  const prose = NON_PROSE.reduce((text, pattern) => text.replace(pattern, " "), body);
+  const words = prose.split(/\s+/).filter((word) => HAS_LETTER_OR_DIGIT.test(word)).length;
   return Math.max(1, Math.ceil(words / WORDS_PER_MINUTE));
 }
 

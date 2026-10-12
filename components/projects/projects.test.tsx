@@ -92,10 +92,26 @@ describe("ProjectDetail", () => {
       />,
     );
     expect(screen.queryByRole("link", { name: /Live demo/ })).not.toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: /Source/ })).toHaveLength(2);
+    expect(screen.getAllByRole("link", { name: /Source/i })).toHaveLength(2);
 
     rerender(<ProjectDetail project={project("alpha")} position={1} total={1} neighbors={NEIGHBORS} />);
     expect(screen.queryByRole("link", { name: /Source|Live demo/ })).not.toBeInTheDocument();
+  });
+
+  it("gives the SPEC links names distinct from the hero links", () => {
+    render(
+      <ProjectDetail
+        project={project("alpha", { links: { demo: "https://demo.dev/x", source: "https://github.com/x/y" } })}
+        position={1}
+        total={1}
+        neighbors={NEIGHBORS}
+      />,
+    );
+    const spec = screen.getByRole("complementary", { name: "Project facts" });
+
+    expect(within(spec).getByRole("link", { name: "Title alpha live demo" })).toHaveAttribute("href", "https://demo.dev/x");
+    expect(within(spec).getByRole("link", { name: "Title alpha source" })).toHaveAttribute("href", "https://github.com/x/y");
+    expect(screen.getAllByRole("link", { name: "▸ Live demo" })).toHaveLength(1);
   });
 
   it("lists STATUS first in the SPEC readout, then spec rows in authored order", () => {

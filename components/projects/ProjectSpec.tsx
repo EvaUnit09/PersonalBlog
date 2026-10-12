@@ -42,12 +42,12 @@ export function ProjectSpec({ project, span }: ProjectSpecProps) {
       {(demo !== undefined || source !== undefined) && (
         <div className={styles.links}>
           {demo !== undefined && (
-            <Button href={demo} variant="secondary">
+            <Button href={demo} variant="secondary" aria-label={`${project.title} live demo`}>
               ▸ Live demo
             </Button>
           )}
           {source !== undefined && (
-            <Button href={source} variant="secondary">
+            <Button href={source} variant="secondary" aria-label={`${project.title} source`}>
               ▸ Source
             </Button>
           )}

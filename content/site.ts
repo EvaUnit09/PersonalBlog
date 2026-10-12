@@ -24,9 +24,8 @@ export const NAV_ITEMS = [
   { index: "04", label: "Log", href: "/log" },
 ] as const satisfies readonly NavItem[];
 
-// PLACEHOLDER: replace with real handles before launch (see docs/design-handoff/README.md).
 export const CONTACT_LINKS: readonly ContactLink[] = [
-  { label: "GitHub", href: "https://github.com/" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/" },
-  { label: "Email", href: "mailto:hello@example.com" },
+  { label: "GitHub", href: "https://github.com/EvaUnit09" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/noahdecaille" },
+  { label: "Email", href: "mailto:noahdecaille@gmail.com" },
 ];

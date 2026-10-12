@@ -14,3 +14,12 @@ export function neighborsOf<T extends { slug: string }>(ordered: readonly T[], s
   }
   return { previous: ordered[index - 1], next: ordered[index + 1] };
 }
+
+/**
+ * Neighbors in a newest-first list, read as a timeline: previous is the next-older entry
+ * and next is the next-newer one. That is the reverse of list order.
+ */
+export function logNeighbors<T extends { slug: string }>(newestFirst: readonly T[], slug: string): Neighbors<T> {
+  const { previous, next } = neighborsOf(newestFirst, slug);
+  return { previous: next, next: previous };
+}

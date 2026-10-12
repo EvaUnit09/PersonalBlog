@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { CachedMdx } from "@/components/content/CachedMdx";
 import { LogPostView } from "@/components/log/LogPostView";
 import { getPosts } from "@/lib/content/log";
-import { neighborsOf } from "@/lib/neighbors";
+import { logNeighbors } from "@/lib/neighbors";
 import { slugParams } from "@/lib/static-params";
 
 export async function generateStaticParams() {
@@ -26,7 +26,6 @@ export async function generateMetadata({ params }: PageProps<"/log/[slug]">): Pr
 
 export default async function LogPostPage({ params }: PageProps<"/log/[slug]">) {
   const { posts, post } = await findPost((await params).slug);
-  const oldestFirst = [...posts].reverse();
 
-  return <LogPostView post={post} neighbors={neighborsOf(oldestFirst, post.slug)} body={<CachedMdx source={post.body} />} />;
+  return <LogPostView post={post} neighbors={logNeighbors(posts, post.slug)} body={<CachedMdx source={post.body} />} />;
 }

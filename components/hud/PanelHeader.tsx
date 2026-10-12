@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { cx } from "@/lib/cx";
+import { DecryptText } from "./DecryptText";
 import styles from "./PanelHeader.module.css";
 
 const UNNUMBERED = "//";
@@ -24,7 +25,7 @@ export function PanelHeader({ index, label, labelId, readout, className }: Panel
       <span>
         <span className={styles.index}>{index}</span>
         {index === UNNUMBERED ? " " : " / "}
-        <span id={labelId}>{label}</span>
+        {typeof label === "string" ? <DecryptText text={label} id={labelId} /> : <span id={labelId}>{label}</span>}
       </span>
       <span aria-hidden="true" className={styles.rule} />
       {readout !== undefined && (

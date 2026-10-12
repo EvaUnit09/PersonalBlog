@@ -1,0 +1,13 @@
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.headerLink {
+  color: inherit;
+}
+
+.headerLink:hover {
+  color: var(--accent-text);
+}

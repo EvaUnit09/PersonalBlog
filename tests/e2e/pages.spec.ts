@@ -1,6 +1,6 @@
 import { expect, test } from "./fixtures";
 
-const PROJECT_SLUGS = ["nightcap", "foodsy", "opsagent", "ticketing"] as const;
+const PROJECT_SLUGS = ["nightcap", "foodsy", "moody", "the-round-up"] as const;
 
 function primaryNav(page: import("@playwright/test").Page) {
   return page.getByRole("navigation", { name: "Primary" });
@@ -41,13 +41,13 @@ test("projects index lists every project in order and links to each", async ({ p
 test("project detail renders its parts and keeps Projects marked in the nav", async ({ page }) => {
   await page.goto("/projects/nightcap");
 
-  await expect(page).toHaveTitle("Noah Decaille: Nightcap");
-  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Nightcap");
+  await expect(page).toHaveTitle("Noah Decaille: NightCap");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("NightCap");
   await expect(primaryNav(page).getByRole("link", { name: /Projects/ })).toHaveAttribute("aria-current", "page");
   const crumbs = page.getByRole("navigation", { name: "Breadcrumb" });
   await expect(crumbs).toHaveText("◂ ALL PROJECTS · 02 / PROJECT 01 OF 04");
-  await expect(page.getByRole("complementary", { name: "Project facts" })).toContainText("IN PROGRESS");
-  await expect(page.getByRole("article")).toHaveCount(0);
+  await expect(page.getByRole("complementary", { name: "Project facts" })).toContainText("CURRENTLY BUILDING");
+  await expect(page.getByRole("article", { name: "NightCap write-up" })).toBeVisible();
 });
 
 test("project detail links only the existing neighbor at the ends of the list", async ({ page }) => {
@@ -56,9 +56,9 @@ test("project detail links only the existing neighbor at the ends of the list", 
   await expect(nav.getByRole("link")).toHaveCount(1);
   await expect(nav.getByRole("link", { name: /NEXT/ })).toHaveAttribute("href", "/projects/foodsy");
 
-  await page.goto("/projects/ticketing");
+  await page.goto("/projects/the-round-up");
   await expect(nav.getByRole("link")).toHaveCount(1);
-  await expect(nav.getByRole("link", { name: /PREVIOUS/ })).toHaveAttribute("href", "/projects/opsagent");
+  await expect(nav.getByRole("link", { name: /PREVIOUS/ })).toHaveAttribute("href", "/projects/moody");
 });
 
 test("log index shows its empty state and advertises the feed", async ({ page }) => {

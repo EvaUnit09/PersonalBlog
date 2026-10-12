@@ -19,12 +19,13 @@ describe("AboutIntroPanel", () => {
 });
 
 describe("IdentityPanel", () => {
-  it("marks the portrait placeholder decorative and lists the identity rows", () => {
+  it("lists the identity rows and has no portrait placeholder", () => {
     render(<IdentityPanel rows={ABOUT.identity} isOpenToWork />);
     const panel = screen.getByRole("complementary", { name: "Identity" });
 
-    expect(within(panel).getByText("[PORTRAIT, 4:5]").closest("[aria-hidden='true']")).not.toBeNull();
+    expect(within(panel).queryByText(/PORTRAIT/)).not.toBeInTheDocument();
     expect(within(panel).getByText("ASTORIA, NYC")).toBeInTheDocument();
+    expect(within(panel).getByText("NOAH DECAILLE")).toBeInTheDocument();
   });
 
   it("shows OPEN TO WORK only while open to work", () => {

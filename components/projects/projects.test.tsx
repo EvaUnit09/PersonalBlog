@@ -35,7 +35,7 @@ describe("ProjectsIndexPanel", () => {
     expect(within(rows[0]!).getByRole("link", { name: "Title alpha" })).toHaveAttribute("href", "/projects/alpha");
     expect(rows[0]).toHaveTextContent("01");
     expect(rows[1]).toHaveTextContent("02");
-    expect(rows[0]).toHaveTextContent("STATUS: IN PROGRESS");
+    expect(rows[0]).toHaveTextContent("STATUS: CURRENTLY BUILDING");
     expect(rows[1]).toHaveTextContent("STATUS: SHIPPED");
     expect(rows[1]).toHaveTextContent("Summary beta");
   });
@@ -132,7 +132,7 @@ describe("ProjectDetail", () => {
     const labels = within(spec).getAllByRole("term").map((term) => term.textContent);
 
     expect(labels).toEqual(["STATUS", "Role", "Backend"]);
-    expect(spec).toHaveTextContent("IN PROGRESS");
+    expect(spec).toHaveTextContent("CURRENTLY BUILDING");
     expect(spec).toHaveTextContent("FastAPI");
   });
 

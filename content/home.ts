@@ -26,7 +26,7 @@ export interface Status {
 
 export const HERO = {
   headline: "Backend engineer. Network nerd turned developer.",
-  lede: "Four years running network infrastructure for the Marines in Okinawa, a detour through film production, then sole developer of internal apps at BBC Studios NY. Now going deeper on backend.",
+  lede: "Four years running Marine Corps network infrastructure in Okinawa, film school in Los Angeles, then software engineer at BBC Studios in New York. Building backend and full-stack systems.",
 } as const satisfies Hero;
 
 // Location is "NYC, ET" because a fixed UTC offset is wrong half the year.
@@ -38,34 +38,24 @@ export const STATUS = {
   previous: "BBC STUDIOS NY",
 } as const satisfies Status;
 
-// PLACEHOLDER: years are user-supplied (see docs/design-handoff/README.md).
 export const EXPERIENCE: readonly ExperienceEntry[] = [
   {
-    start: "[YYYY]",
-    title: "Independent, backend focus",
-    summary: "Portfolio builds in Django, FastAPI and Postgres.",
+    start: "2024",
+    end: "2026",
+    title: "Software Engineer, BBC Studios",
+    summary:
+      "New York City, NY, Aug 2024 to Aug 2026. Built and owned a FastAPI, PostgreSQL, and React/TypeScript asset platform for 2000+ assets, saving $5000/yr in licensing. Added Microsoft Entra ID SSO with AD group RBAC. Cut asset lookup and reporting by 10 hours/week with a LangGraph agent, with tracing and evaluation. Replaced an Excel JML process with a REST API and React app (30% faster onboarding and offboarding, 150+ employees/year) and built a Django checkout app that emails overdue returns for 350+ loaner requests a year.",
   },
   {
-    start: "[YYYY]",
-    end: "[YYYY]",
-    title: "Software engineer, BBC Studios NY",
-    summary: "Sole developer of internal applications on a five-person IT team.",
-  },
-  {
-    start: "[YYYY]",
-    end: "[YYYY]",
-    title: "Film production, Los Angeles",
-    summary: "Film school on the GI Bill, then on set. Taught myself to code here.",
-  },
-  {
-    start: "[YYYY]",
-    end: "[YYYY]",
-    title: "Network Infrastructure Specialist, USMC",
-    summary: "Four years in Okinawa.",
+    start: "2015",
+    end: "2020",
+    title: "Network Infrastructure Specialist, United States Marine Corps",
+    summary:
+      "Okinawa, Japan, Jun 2015 to Jun 2020. Administered switches, routers, DNS, and DHCP for 500+ users across the battalion, including exercises and deployments. Automated patch deployment with PowerShell and Windows Task Scheduler to 98% compliance.",
   },
 ];
 
 export const STACK = {
-  daily: ["Python", "Django", "FastAPI", "PostgreSQL", "TypeScript", "React"],
-  learning: ["Agent observability", "System design"],
+  daily: ["Python", "TypeScript", "FastAPI", "Django", "PostgreSQL", "React", "Next.js"],
+  learning: ["LangGraph", "AWS"],
 } as const satisfies Stack;

@@ -26,9 +26,6 @@ export function FeaturedPanel({ projects }: FeaturedPanelProps) {
         {featured.title}
       </h2>
       <p className={`t-body ${styles.summary}`}>{featured.summary}</p>
-      <div aria-hidden="true" className={styles.shot}>
-        <span className="t-readout">[SCREENSHOT: ITINERARY VIEW]</span>
-      </div>
       <div className={styles.footer}>
         <Button href={`/projects/${featured.slug}`} variant="secondary">
           ▸ Read the write-up

@@ -14,9 +14,6 @@ export function IdentityPanel({ rows, isOpenToWork }: IdentityPanelProps) {
   return (
     <Panel as="aside" span={4} aria-label="Identity" className={styles.panel}>
       <PanelHeader index="//" label="ID" />
-      <div aria-hidden="true" className={styles.portrait}>
-        <span className="t-readout">[PORTRAIT, 4:5]</span>
-      </div>
       <dl className={styles.rows}>
         {rows.map((row) => (
           <ReadoutRow key={row.label} isRuled label={row.label} value={row.value} />

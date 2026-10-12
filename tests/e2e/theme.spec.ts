@@ -9,6 +9,24 @@ function getScanlineStyle(page: Page) {
   });
 }
 
+type ThemeProbe = Window & { themeAtFirstBody?: string | null };
+
+// Records data-theme when <body> is first inserted, i.e. before first paint and long before hydration.
+async function probeThemeAtFirstBody(page: Page) {
+  await page.addInitScript(() => {
+    const observer = new MutationObserver(() => {
+      if (!document.body) return;
+      (window as ThemeProbe).themeAtFirstBody = document.documentElement.dataset.theme ?? null;
+      observer.disconnect();
+    });
+    observer.observe(document, { childList: true, subtree: true });
+  });
+}
+
+function readThemeAtFirstBody(page: Page) {
+  return page.evaluate(() => (window as ThemeProbe).themeAtFirstBody);
+}
+
 test.describe("theme", () => {
   test.use({ colorScheme: "light" });
 
@@ -20,11 +38,11 @@ test.describe("theme", () => {
     });
     page.on("pageerror", (error) => problems.push(error.message));
 
+    await probeThemeAtFirstBody(page);
     await page.goto("/");
-    const themeRightAfterLoad = await page.evaluate(() => document.documentElement.dataset.theme);
     await expect(page.getByRole("button", { name: "LIGHT" })).toHaveAttribute("aria-pressed", "true");
 
-    expect(themeRightAfterLoad).toBe("light");
+    expect(await readThemeAtFirstBody(page)).toBe("light");
     expect(problems).toEqual([]);
   });
 
@@ -35,9 +53,10 @@ test.describe("theme", () => {
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
     await expect(page.getByRole("button", { name: "DARK" })).toHaveAttribute("aria-pressed", "true");
 
+    await probeThemeAtFirstBody(page);
     await page.reload();
 
-    expect(await page.evaluate(() => document.documentElement.dataset.theme)).toBe("dark");
+    expect(await readThemeAtFirstBody(page)).toBe("dark");
     await expect(page.getByRole("button", { name: "DARK" })).toHaveAttribute("aria-pressed", "true");
   });
 

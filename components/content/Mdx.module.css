@@ -18,11 +18,29 @@
   margin: 0 0 20px;
 }
 
+.prose {
+  counter-reset: section;
+}
+
 .prose h2 {
   margin: 44px 0 14px;
   font-size: 28px;
   font-weight: 600;
   line-height: 34px;
+  counter-increment: section;
+}
+
+/* Section index above each h2. The "/ ..." alternative text keeps the number out of the accessibility tree. */
+.prose h2::before {
+  content: counter(section, decimal-leading-zero);
+  content: counter(section, decimal-leading-zero) / "";
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  color: var(--accent-text);
 }
 
 .prose blockquote {

@@ -1,0 +1,39 @@
+.nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.link {
+  position: relative;
+  display: block;
+  min-width: 0;
+  padding: var(--space-6);
+  background: var(--bg-100);
+  color: var(--ink);
+}
+
+.next {
+  grid-column: 2;
+  text-align: right;
+}
+
+.direction {
+  display: block;
+  color: var(--ink-faint);
+}
+
+.title {
+  display: block;
+  margin-top: 6px;
+}
+
+@media (max-width: 720px) {
+  .nav {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .next {
+    grid-column: 1;
+  }
+}

@@ -74,23 +74,21 @@ test("log index shows its empty state and advertises the feed", async ({ page })
   );
 });
 
-// With cacheComponents an unknown slug is rendered on its first request, after the response has started
-// streaming, so that one response is 200 with the not-found UI (and a noindex meta). Next saves the result
-// and answers 404 from then on, so the test checks the UI and the settled status instead of racing the first request.
-for (const path of ["/projects/nope", "/log/nope"]) {
-  test(`${path} shows the not-found page and settles to a 404`, async ({ page, request }) => {
-    await page.goto(path);
+// The proxy answers unknown slugs itself, so even the first request to a fresh server is a 404 with the not-found UI.
+for (const path of ["/projects/nope", "/log/nope", "/log/__placeholder__"]) {
+  test(`${path} is a 404 with the not-found page on the first request`, async ({ page }) => {
+    const response = await page.goto(path);
 
+    expect(response?.status()).toBe(404);
     await expect(page.getByText("This page could not be found.")).toBeVisible();
-    await expect.poll(async () => (await request.get(path)).status()).toBe(404);
   });
 }
 
-test("the log placeholder param is prerendered as a 404", async ({ page }) => {
-  const response = await page.goto("/log/__placeholder__");
-
-  expect(response?.status()).toBe(404);
-});
+for (const path of ["/projects/nightcap", "/log/feed.xml"]) {
+  test(`${path} is still served with a 200`, async ({ request }) => {
+    expect((await request.get(path)).status()).toBe(200);
+  });
+}
 
 test("the RSS feed is served as XML and parses as an RSS 2.0 channel", async ({ page, request }) => {
   const response = await request.get("/log/feed.xml");

@@ -1,5 +1,6 @@
 import { act, render } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { BOOT_HOLD_MS, BOOT_TIMING, bootSchedule, buildBootLines, formatBootLine, totalChars } from "@/lib/boot";
 import { Boot } from "./Boot";
 
 vi.mock("@/lib/content/projects", () => ({ getProjects: async () => [{}, {}, {}] }));
@@ -20,9 +21,12 @@ describe("Boot", () => {
     document.documentElement.dataset.boot = "pending";
     const { container } = render(await Boot());
 
-    act(() => frame(1300));
+    const lines = buildBootLines({ projects: 3, posts: 1 }, "dark");
+    const typedEndMs = totalChars(lines) * bootSchedule(lines, BOOT_TIMING);
+    act(() => frame(typedEndMs + BOOT_HOLD_MS / 2));
 
     expect(container).toHaveTextContent("mount /projects ... 3 found");
     expect(container).toHaveTextContent("mount /log ... 1 entry");
+    for (const line of lines) expect(container).toHaveTextContent(formatBootLine(line));
   });
 });

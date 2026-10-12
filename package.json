@@ -17,6 +17,7 @@
     "prebuild": "npm run content:slugs"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.3.2",
     "next": "16.4.0",

@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 import { Crumbs } from "@/components/hud/Crumbs";
-import { PostNav, type PostNavTarget } from "@/components/hud/PostNav";
+import { PostNav } from "@/components/hud/PostNav";
 import { TagList } from "@/components/hud/Tag";
+import { toNavTarget } from "@/components/hud/toNavTarget";
 import type { Post } from "@/lib/content/log";
 import type { Neighbors } from "@/lib/neighbors";
 import { padIndex } from "@/lib/padIndex";
@@ -13,10 +14,6 @@ interface LogPostViewProps {
   neighbors: Neighbors<Post>;
   /** Rendered MDX body. */
   body: ReactNode;
-}
-
-function toTarget(post: Post | undefined): PostNavTarget | undefined {
-  return post && { href: `/log/${post.slug}`, title: post.title };
 }
 
 export function LogPostView({ post, neighbors, body }: LogPostViewProps) {
@@ -38,7 +35,7 @@ export function LogPostView({ post, neighbors, body }: LogPostViewProps) {
         <span className="t-readout">TAGS</span>
         <TagList tags={post.tags} label="Tags" />
       </div>
-      <PostNav label="Post navigation" previous={toTarget(neighbors.previous)} next={toTarget(neighbors.next)} />
+      <PostNav label="Post navigation" previous={toNavTarget("/log", neighbors.previous)} next={toNavTarget("/log", neighbors.next)} />
     </main>
   );
 }

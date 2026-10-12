@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 import { Crumbs } from "@/components/hud/Crumbs";
 import { Panel } from "@/components/hud/Panel";
-import { PostNav, type PostNavTarget } from "@/components/hud/PostNav";
+import { PostNav } from "@/components/hud/PostNav";
+import { toNavTarget } from "@/components/hud/toNavTarget";
 import type { Project } from "@/lib/content/projects";
 import type { Neighbors } from "@/lib/neighbors";
 import { padIndex } from "@/lib/padIndex";
@@ -17,10 +18,6 @@ interface ProjectDetailProps {
   neighbors: Neighbors<Project>;
   /** Rendered write-up; omit when the project has no body. */
   body?: ReactNode;
-}
-
-function toTarget(project: Project | undefined): PostNavTarget | undefined {
-  return project && { href: `/projects/${project.slug}`, title: project.title };
 }
 
 export function ProjectDetail({ project, position, total, neighbors, body }: ProjectDetailProps) {
@@ -47,8 +44,8 @@ export function ProjectDetail({ project, position, total, neighbors, body }: Pro
       </div>
       <PostNav
         label="Project navigation"
-        previous={toTarget(neighbors.previous)}
-        next={toTarget(neighbors.next)}
+        previous={toNavTarget("/projects", neighbors.previous)}
+        next={toNavTarget("/projects", neighbors.next)}
       />
     </main>
   );

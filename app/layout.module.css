@@ -12,3 +12,19 @@
     padding: var(--space-4);
   }
 }
+
+/*
+ * Failsafe: the pre-paint script hides the page for the boot, and only the JS bundle un-hides it.
+ * If that bundle never runs, this CSS-only timer reveals the page at 2s (just past the 1.5s boot)
+ * and the overlay hides itself on the same clock, so the page can never stay blank.
+ */
+:global(html[data-boot="pending"]) .shell {
+  visibility: hidden;
+  animation: failsafe-reveal 0s linear 2s forwards;
+}
+
+@keyframes failsafe-reveal {
+  to {
+    visibility: visible;
+  }
+}

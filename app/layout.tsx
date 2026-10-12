@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Boot } from "@/components/boot/Boot";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { bootInitScript } from "@/lib/boot";
 import { getSiteOrigin } from "@/lib/site-url";
 import { themeInitScript } from "@/lib/theme";
 import { archivo, jetbrainsMono } from "./fonts";
@@ -25,8 +27,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript() }} />
+        <script dangerouslySetInnerHTML={{ __html: bootInitScript() }} />
       </head>
       <body>
+        <Boot />
         <div className={styles.shell}>
           <SiteHeader />
           {children}

@@ -1,0 +1,67 @@
+.overlay {
+  display: none;
+}
+
+/* Below the z-index 100 scanline layer so the overlay reads as part of the same screen. */
+:global(html[data-boot="pending"]) .overlay {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-8);
+  background: var(--bg-000);
+  color: var(--ink);
+  /* Failsafe partner of the page reveal in app/layout.module.css. */
+  animation: failsafe-hide 0s linear 2s forwards;
+}
+
+@keyframes failsafe-hide {
+  to {
+    visibility: hidden;
+  }
+}
+
+.log {
+  max-width: var(--content-max);
+  width: 100%;
+  margin: 0 auto;
+  white-space: pre-wrap;
+}
+
+.prompt {
+  color: var(--ink-faint);
+}
+
+.result {
+  color: var(--accent-text);
+}
+
+.skip {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-8);
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  color: var(--ink-faint);
+  cursor: pointer;
+}
+
+.skip:hover {
+  color: var(--accent-text);
+}
+
+@media (max-width: 720px) {
+  :global(html[data-boot="pending"]) .overlay {
+    padding: var(--space-4);
+  }
+
+  .skip {
+    top: var(--space-4);
+    right: var(--space-4);
+  }
+}

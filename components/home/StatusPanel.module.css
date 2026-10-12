@@ -1,0 +1,38 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.open {
+  margin: 0;
+  color: var(--ink);
+}
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: var(--space-2);
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  box-shadow: var(--glow-accent);
+}
+
+.readouts {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+}
+
+.prompt {
+  margin: var(--space-6) 0 0;
+  padding-top: var(--space-4);
+  border-top: var(--stroke-hair) solid var(--line);
+  color: var(--ink-faint);
+}
+
+.available {
+  color: var(--accent-text);
+}

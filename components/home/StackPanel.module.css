@@ -1,0 +1,15 @@
+/* Mockup spaces stack tags wider than the default TagList gap. */
+.panel ul {
+  gap: 10px var(--space-4);
+}
+
+.learning {
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: var(--stroke-hair) solid var(--line);
+}
+
+.label {
+  margin: 0 0 var(--space-2);
+  color: var(--ink-faint);
+}

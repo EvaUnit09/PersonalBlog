@@ -13,13 +13,12 @@ export interface BootCounts {
 
 export interface BootTiming {
   budgetMs: number;
-  maxCharMs: number;
 }
 
 export const BOOT_STORAGE_KEY = "boot-seen";
 export const BOOT_SEEN = "1";
 export const BOOT_PENDING = "pending";
-export const BOOT_TIMING: BootTiming = { budgetMs: 1400, maxCharMs: 25 };
+export const BOOT_TIMING: BootTiming = { budgetMs: 1400 };
 /** Time the finished log stays up so the last line can be read. */
 export const BOOT_HOLD_MS = 100;
 
@@ -47,9 +46,9 @@ export function totalChars(lines: readonly BootLine[]): number {
   return lines.reduce((sum, line) => sum + formatBootLine(line).length, 0);
 }
 
-/** Per-character delay: the brand's typing speed, compressed so the whole log fits the budget. */
-export function bootSchedule(lines: readonly BootLine[], { budgetMs, maxCharMs }: BootTiming): number {
-  return Math.min(maxCharMs, budgetMs / totalChars(lines));
+/** Per-character delay that fits the whole log in the budget. The log is always long enough that this beats the brand book's ~25ms/char. */
+export function bootSchedule(lines: readonly BootLine[], { budgetMs }: BootTiming): number {
+  return budgetMs / totalChars(lines);
 }
 
 /** Characters typed so far on each line; lines type one after another. */

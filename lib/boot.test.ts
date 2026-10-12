@@ -15,7 +15,6 @@ import {
 } from "./boot";
 import { prefersReducedMotion } from "./motion";
 
-const SHORT: readonly BootLine[] = [{ command: "a", result: "b" }];
 
 function lineOfLength(length: number): BootLine {
   return { command: "x".repeat(length - " ... ".length - 1), result: "y" };
@@ -56,16 +55,12 @@ describe("buildBootLines", () => {
 });
 
 describe("bootSchedule", () => {
-  it("types at the 25ms cap when the content is short", () => {
-    expect(bootSchedule(SHORT, BOOT_TIMING)).toBe(25);
-  });
-
-  it("compresses long content so all of it types within the budget", () => {
+  it("spreads the budget evenly so all of the log types within it", () => {
     const lines = [lineOfLength(200), lineOfLength(150)];
     const charMs = bootSchedule(lines, BOOT_TIMING);
 
-    expect(charMs).toBeLessThan(25);
-    expect(totalChars(lines) * charMs).toBeCloseTo(1400);
+    expect(charMs).toBeCloseTo(BOOT_TIMING.budgetMs / 350);
+    expect(totalChars(lines) * charMs).toBeCloseTo(BOOT_TIMING.budgetMs);
   });
 
   it("keeps the real boot log under 1.5s", () => {

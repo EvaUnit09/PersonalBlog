@@ -67,6 +67,12 @@ describe("ContactPanel", () => {
     expect(screen.getByRole("link", { name: "GitHub" })).toHaveAttribute("data-variant", "secondary");
   });
 
+  it("puts the email action first regardless of link order", () => {
+    render(<ContactPanel prompt="Hiring?" links={LINKS} />);
+
+    expect(screen.getAllByRole("link").map((link) => link.textContent)).toEqual(["▸ Email me", "GitHub"]);
+  });
+
   it("has no resume or reply-time placeholders", () => {
     render(<ContactPanel prompt="Hiring?" links={LINKS} />);
 

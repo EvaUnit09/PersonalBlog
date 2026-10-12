@@ -10,13 +10,13 @@ function project(slug: string, overrides: Partial<Project> = {}): Project {
     title: `Title ${slug}`,
     summary: `Summary ${slug}`,
     tags: [`Tag ${slug}`],
-    status: "SHIPPED",
+    status: "shipped",
     ...overrides,
   };
 }
 
 const PROJECTS: readonly [Project, ...Project[]] = [
-  project("alpha", { status: "IN PROGRESS" }),
+  project("alpha", { status: "in-progress" }),
   project("beta"),
   project("gamma"),
   project("delta"),
@@ -43,6 +43,14 @@ describe("FeaturedPanel", () => {
     expect(screen.getByText("PROJECT 01 OF 02")).toBeInTheDocument();
   });
 
+  it("tags the featured project with its own stack", () => {
+    render(<FeaturedPanel projects={PROJECTS} />);
+    const stack = screen.getByRole("list", { name: "Stack" });
+
+    expect(within(stack).getByText("[Tag alpha]")).toBeInTheDocument();
+    expect(within(stack).queryByText("[Tag beta]")).not.toBeInTheDocument();
+  });
+
   it("shows the featured project's status", () => {
     render(<FeaturedPanel projects={PROJECTS} />);
 
@@ -67,6 +75,15 @@ describe("AlsoBuiltPanel", () => {
     expect(rows[1]).toHaveTextContent("03");
     expect(rows[2]).toHaveTextContent("04");
     expect(screen.queryByText("Title alpha")).not.toBeInTheDocument();
+  });
+
+  it("shows each row's own summary and tags", () => {
+    render(<AlsoBuiltPanel projects={PROJECTS} />);
+
+    expect(screen.getByText("Summary beta")).toBeInTheDocument();
+    const betaStack = screen.getByRole("list", { name: "Title beta stack" });
+    expect(within(betaStack).getByText("[Tag beta]")).toBeInTheDocument();
+    expect(within(betaStack).queryByText("[Tag gamma]")).not.toBeInTheDocument();
   });
 
   it("links ALL to the projects index", () => {

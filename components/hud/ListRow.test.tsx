@@ -1,6 +1,7 @@
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { ListRow } from "./ListRow";
+import styles from "./ListRow.module.css";
 
 describe("ListRow", () => {
   it("renders marker, title and summary as one list item", () => {
@@ -39,6 +40,8 @@ describe("ListRow", () => {
       </ol>,
     );
 
-    expect(screen.getByText("02").className).not.toBe(screen.getByText("[YYYY] – NOW").className);
+    expect(screen.getByText("02")).toHaveClass(styles.index);
+    expect(screen.getByText("[YYYY] – NOW")).toHaveClass(styles.period);
+    expect(screen.getByText("[YYYY] – NOW")).not.toHaveClass(styles.index);
   });
 });

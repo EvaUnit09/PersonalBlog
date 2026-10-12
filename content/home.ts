@@ -1,4 +1,9 @@
-export type ProjectStatus = "IN PROGRESS" | "SHIPPED";
+export type ProjectStatus = "in-progress" | "shipped";
+
+export const PROJECT_STATUS_LABEL: Record<ProjectStatus, string> = {
+  "in-progress": "IN PROGRESS",
+  shipped: "SHIPPED",
+};
 
 export interface Project {
   slug: string;
@@ -64,28 +69,28 @@ export const PROJECTS: readonly [Project, ...Project[]] = [
     summary:
       "An AI planner for date and hangout nights in NYC. Tell it the vibe and the budget, get a route of places that fit.",
     tags: ["FastAPI", "Postgres", "React", "AI agents"],
-    status: "IN PROGRESS",
+    status: "in-progress",
   },
   {
     slug: "foodsy",
     title: "Foodsy",
     summary: "Full-stack food app, end to end.",
     tags: ["Full-stack"],
-    status: "IN PROGRESS",
+    status: "in-progress",
   },
   {
     slug: "opsagent",
     title: "OpsAgent",
     summary: "AI agent orchestration for ops workflows.",
     tags: ["Agents"],
-    status: "IN PROGRESS",
+    status: "in-progress",
   },
   {
     slug: "ticketing",
     title: "Ticketing practice build",
     summary: "Ticketmaster-style system design exercise.",
     tags: ["Django", "React"],
-    status: "IN PROGRESS",
+    status: "in-progress",
   },
 ];
 

@@ -30,9 +30,13 @@ describe("StatusPanel", () => {
   it("shows role, location, coordinates and previous employer", () => {
     render(<StatusPanel status={STATUS} />);
 
-    const terms = screen.getAllByRole("term").map((t) => t.textContent);
-    expect(terms).toEqual(["ROLE", "LOCATION", "COORD", "PREV"]);
-    expect(screen.getByText("NYC, ET")).toBeInTheDocument();
+    const pairs = screen.getAllByRole("term").map((term) => [term.textContent, term.nextElementSibling?.textContent]);
+    expect(pairs).toEqual([
+      ["ROLE", STATUS.role],
+      ["LOCATION", STATUS.location],
+      ["COORD", STATUS.coordinates],
+      ["PREV", STATUS.previous],
+    ]);
   });
 
   it("has no BUILD readout until real CI data exists", () => {

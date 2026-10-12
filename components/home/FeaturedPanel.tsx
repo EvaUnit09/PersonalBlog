@@ -1,4 +1,4 @@
-import type { Project } from "@/content/home";
+import { PROJECT_STATUS_LABEL, type Project } from "@/content/home";
 import { Button } from "@/components/hud/Button";
 import { Panel } from "@/components/hud/Panel";
 import { PanelHeader } from "@/components/hud/PanelHeader";
@@ -32,7 +32,7 @@ export function FeaturedPanel({ projects }: FeaturedPanelProps) {
         <Button href={`/projects/${featured.slug}`} variant="secondary">
           ▸ Read the write-up
         </Button>
-        <span className={`t-readout ${styles.status}`}>STATUS: {featured.status}</span>
+        <span className={`t-readout ${styles.status}`}>STATUS: {PROJECT_STATUS_LABEL[featured.status]}</span>
       </div>
     </Panel>
   );

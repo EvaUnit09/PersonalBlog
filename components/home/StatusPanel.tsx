@@ -12,20 +12,18 @@ export function StatusPanel({ status }: StatusPanelProps) {
   return (
     <Panel as="aside" span={4} aria-label="Status">
       <PanelHeader index="//" label="Status" />
-      <div className={styles.body}>
-        {status.isOpenToWork && (
-          <p className={`t-code ${styles.open}`}>
-            <span aria-hidden="true" className={styles.dot} />
-            OPEN TO WORK
-          </p>
-        )}
-        <dl className={styles.readouts}>
-          <ReadoutRow label="ROLE" value={status.role} />
-          <ReadoutRow label="LOCATION" value={status.location} />
-          <ReadoutRow label="COORD" value={status.coordinates} />
-          <ReadoutRow label="PREV" value={status.previous} />
-        </dl>
-      </div>
+      {status.isOpenToWork && (
+        <p className={`t-code ${styles.open}`}>
+          <span aria-hidden="true" className={styles.dot} />
+          OPEN TO WORK
+        </p>
+      )}
+      <dl className={styles.readouts}>
+        <ReadoutRow label="ROLE" value={status.role} />
+        <ReadoutRow label="LOCATION" value={status.location} />
+        <ReadoutRow label="COORD" value={status.coordinates} />
+        <ReadoutRow label="PREV" value={status.previous} />
+      </dl>
       {status.isOpenToWork && (
         <p className={`t-readout ${styles.prompt}`}>
           noah@astoria:~$ <span className={styles.available}>available</span>

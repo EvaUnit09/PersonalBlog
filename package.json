@@ -14,9 +14,14 @@
     "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "next": "16.4.0",
+    "next-mdx-remote": "^6.0.0",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "rehype-pretty-code": "^0.14.5",
+    "shiki": "^4.5.0",
+    "zod": "^4.6.6"
   },
   "devDependencies": {
     "@playwright/test": "^1.64.0",

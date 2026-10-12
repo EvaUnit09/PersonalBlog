@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: 20px;
+  color: var(--ink);
+}
+
+.index {
+  color: var(--accent-text);
+}
+
+.rule {
+  flex: 1;
+  height: var(--stroke-hair);
+  background: var(--line);
+}
+
+.readout {
+  color: var(--ink-faint);
+}

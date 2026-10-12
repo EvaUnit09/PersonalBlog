@@ -1,0 +1,25 @@
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: inline-block;
+  padding: var(--space-2) 0;
+  border-bottom: var(--stroke-bracket) solid transparent;
+  color: var(--ink);
+}
+
+.link:hover,
+.link[aria-current="page"] {
+  border-bottom-color: var(--accent);
+  color: var(--ink);
+}
+
+.index {
+  color: var(--accent-text);
+}

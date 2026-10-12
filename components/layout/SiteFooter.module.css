@@ -1,0 +1,23 @@
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: var(--stroke-hair) solid var(--line);
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+.copyright {
+  margin: 0;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

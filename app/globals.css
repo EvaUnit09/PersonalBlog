@@ -40,6 +40,23 @@ html[data-theme="light"] body {
   background-size: var(--space-6) var(--space-6);
 }
 
+/* Dark is the token default, so a no-JS page (no data-theme) gets scanlines too. */
+html:not([data-theme="light"]) body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: var(--scanline);
+  background: repeating-linear-gradient(
+    to bottom,
+    #fff 0,
+    #fff 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
 a {
   color: var(--cyan);
   text-decoration: none;

@@ -1,0 +1,26 @@
+.toggle {
+  color: var(--ink-faint);
+  white-space: pre;
+}
+
+.button {
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
+  color: var(--ink-faint);
+  cursor: pointer;
+}
+
+.button:hover {
+  color: var(--ink-muted);
+}
+
+.button[aria-pressed="true"],
+.button[aria-pressed="true"]:hover {
+  color: var(--accent-text);
+  /* In light, accent-text and ink-faint have near-equal luminance, so colour alone can't mark the pressed side. */
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

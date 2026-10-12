@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SITE } from "@/content/site";
 import { cx } from "@/lib/cx";
 import { NavLinks } from "./NavLinks";
+import { ThemeToggle } from "./ThemeToggle";
 import styles from "./SiteHeader.module.css";
 
 export function SiteHeader() {
@@ -11,10 +12,7 @@ export function SiteHeader() {
         {SITE.name}
       </Link>
       <NavLinks />
-      {/* Static stand-in; becomes the ThemeToggle button in Phase 4. */}
-      <span aria-hidden="true" className={cx(styles.theme, "t-readout")}>
-        [ <span className={styles.themeActive}>DARK</span> / LIGHT ]
-      </span>
+      <ThemeToggle />
     </header>
   );
 }

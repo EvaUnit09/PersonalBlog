@@ -55,4 +55,10 @@ describe("SiteHeader", () => {
     const nav = screen.getByRole("navigation", { name: "Primary" });
     expect(within(nav).queryAllByRole("link", { current: "page" })).toHaveLength(0);
   });
+
+  it("includes the theme toggle", () => {
+    render(<SiteHeader />);
+
+    expect(screen.getByRole("group", { name: "Theme" })).toBeInTheDocument();
+  });
 });

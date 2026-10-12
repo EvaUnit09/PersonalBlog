@@ -10,7 +10,7 @@ export type PanelIndex = typeof UNNUMBERED | `0${1 | 2 | 3 | 4 | 5}`;
 
 interface PanelHeaderProps {
   index: PanelIndex;
-  label: ReactNode;
+  label: string;
   /** id for the label, so the parent panel can use aria-labelledby. */
   labelId?: string;
   /** Right-aligned readout or link after the rule. */
@@ -25,7 +25,7 @@ export function PanelHeader({ index, label, labelId, readout, className }: Panel
       <span>
         <span className={styles.index}>{index}</span>
         {index === UNNUMBERED ? " " : " / "}
-        {typeof label === "string" ? <DecryptText text={label} id={labelId} /> : <span id={labelId}>{label}</span>}
+        <DecryptText text={label} id={labelId} />
       </span>
       <span aria-hidden="true" className={styles.rule} />
       {readout !== undefined && (

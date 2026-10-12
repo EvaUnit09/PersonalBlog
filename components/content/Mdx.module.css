@@ -2,9 +2,9 @@
   --code-foreground: var(--ink);
   --code-token-comment: var(--ink-faint);
   --code-token-keyword: var(--accent-text);
-  --code-token-constant: var(--ink);
-  --code-token-string: var(--ink);
-  --code-token-string-expression: var(--ink);
+  --code-token-constant: var(--accent-text);
+  --code-token-string: var(--ink-faint);
+  --code-token-string-expression: var(--ink-faint);
   --code-token-function: var(--ink);
   --code-token-parameter: var(--ink);
   --code-token-punctuation: var(--ink);

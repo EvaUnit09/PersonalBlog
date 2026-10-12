@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { CONTACT_LINKS } from "@/content/site";
 import { findPlaceholderLinks } from "./placeholders";
 
 describe("findPlaceholderLinks", () => {
@@ -20,5 +21,9 @@ describe("findPlaceholderLinks", () => {
     ];
 
     expect(findPlaceholderLinks(links)).toEqual([]);
+  });
+
+  it("finds none in the site's contact links, so production builds pass", () => {
+    expect(findPlaceholderLinks(CONTACT_LINKS)).toEqual([]);
   });
 });

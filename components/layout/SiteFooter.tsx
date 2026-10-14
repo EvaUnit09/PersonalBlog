@@ -1,5 +1,6 @@
 import { CONTACT_LINKS, SITE } from "@/content/site";
 import { cx } from "@/lib/cx";
+import { externalLinkAttrs } from "@/lib/external-href";
 import styles from "./SiteFooter.module.css";
 
 export function SiteFooter() {
@@ -11,7 +12,7 @@ export function SiteFooter() {
       <ul className={styles.links}>
         {CONTACT_LINKS.map((contact) => (
           <li key={contact.label}>
-            <a href={contact.href}>
+            <a href={contact.href} {...externalLinkAttrs(contact.href)}>
               {contact.label} <span aria-hidden="true">▸</span>
             </a>
           </li>

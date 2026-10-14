@@ -10,14 +10,18 @@ describe("SiteFooter", () => {
     expect(screen.getByRole("contentinfo")).toHaveTextContent(/© Noah Decaille · New York, NY/i);
   });
 
-  it("links every contact channel in a new tab", () => {
+  it("opens http(s) contact channels in a new tab and leaves mailto here", () => {
     render(<SiteFooter />);
 
     for (const contact of CONTACT_LINKS) {
       const link = screen.getByRole("link", { name: new RegExp(contact.label, "i") });
       expect(link).toHaveAttribute("href", contact.href);
-      expect(link).toHaveAttribute("target", "_blank");
-      expect(link).toHaveAttribute("rel", "noopener noreferrer");
+      if (contact.href.startsWith("mailto:")) {
+        expect(link).not.toHaveAttribute("target", "_blank");
+      } else {
+        expect(link).toHaveAttribute("target", "_blank");
+        expect(link).toHaveAttribute("rel", "noopener noreferrer");
+      }
     }
   });
 });

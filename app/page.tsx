@@ -8,6 +8,9 @@ import { StatusPanel } from "@/components/home/StatusPanel";
 import { EXPERIENCE, HERO, STACK, STATUS } from "@/content/home";
 import { getPosts } from "@/lib/content/log";
 import { getProjects } from "@/lib/content/projects";
+import { homeMetadata } from "@/lib/page-metadata";
+
+export const metadata = homeMetadata();
 
 export default async function HomePage() {
   const [projects, posts] = await Promise.all([getProjects(), getPosts()]);

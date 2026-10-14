@@ -13,7 +13,7 @@ Personal site system for Noah Decaille: projects, a blog ("Log"), experience and
 
 - **Voice:** first person, terse, operator-like. Short declaratives. "Built this to plan date nights without 40 tabs." not "I'm passionate about leveraging AI."
 - **Section indices:** numbered, uppercase, slash-separated: `01 / ABOUT`, `02 / PROJECTS`, `03 / EXPERIENCE`, `04 / LOG`. The blog is called **Log**.
-- **Readouts:** real data only, never filler. Good: `LAT 40.7644 LON -73.9235` (Astoria), `LAST COMMIT 3h AGO`, `STATUS: OPEN TO WORK`, `BUILD ▲ PASSING`. Bad: fake hex dumps, lorem readouts.
+- **Readouts:** real data only, never filler. Good: `LOC NYC`, `LAST COMMIT 3h AGO`, `STATUS: OPEN TO WORK`, `BUILD ▲ PASSING`. Bad: fake hex dumps, lorem readouts.
 - **Tags:** bracketed and uppercase: `[DJANGO] [POSTGRES] [AI]`.
 - **Dates:** ISO in mono: `2026-10-11`.
 - **Glyphs as icons:** `▸` link/expand, `◂` back, `■` active, `□` inactive, `▲` up/ok, `×` close. No emoji.

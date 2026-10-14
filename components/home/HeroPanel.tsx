@@ -11,7 +11,7 @@ interface HeroPanelProps {
 export function HeroPanel({ hero }: HeroPanelProps) {
   return (
     <Panel id="about" span={8} size="hero" aria-labelledby="hero">
-      <PanelHeader index="01" label="About" readout="NYC / ASTORIA" className={styles.header} />
+      <PanelHeader index="01" label="About" readout="NYC" className={styles.header} />
       <h1 id="hero" className={`t-display ${styles.headline}`}>
         {hero.headline}
         <span aria-hidden="true" className={styles.cursor}>

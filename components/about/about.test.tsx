@@ -1,7 +1,8 @@
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { ABOUT } from "@/content/about";
+import { ABOUT, heldCertificationCount } from "@/content/about";
 import { AboutIntroPanel } from "./AboutIntroPanel";
+import { CertificationsPanel } from "./CertificationsPanel";
 import { ContactPanel } from "./ContactPanel";
 import { IdentityPanel } from "./IdentityPanel";
 import { PathPanel } from "./PathPanel";
@@ -24,7 +25,7 @@ describe("IdentityPanel", () => {
     const panel = screen.getByRole("complementary", { name: "Identity" });
 
     expect(within(panel).queryByText(/PORTRAIT/)).not.toBeInTheDocument();
-    expect(within(panel).getByText("ASTORIA, NYC")).toBeInTheDocument();
+    expect(within(panel).getByText("NYC")).toBeInTheDocument();
     expect(within(panel).getByText("NOAH DECAILLE")).toBeInTheDocument();
   });
 
@@ -45,6 +46,25 @@ describe("PathPanel", () => {
     expect(within(panel).getAllByRole("listitem")).toHaveLength(ABOUT.path.length);
     expect(panel).toHaveTextContent(`${ABOUT.path.length} STAGES`);
     expect(panel).toHaveTextContent("03");
+  });
+});
+
+describe("CertificationsPanel", () => {
+  it("counts only held certifications, not in-progress ones", () => {
+    expect(heldCertificationCount(ABOUT.certifications)).toBe(3);
+    expect(ABOUT.certifications).toHaveLength(4);
+  });
+
+  it("lists each certification with the resume wording", () => {
+    render(<CertificationsPanel items={ABOUT.certifications} />);
+    const panel = screen.getByRole("region", { name: "Certifications" });
+
+    expect(within(panel).getAllByRole("listitem")).toHaveLength(ABOUT.certifications.length);
+    expect(panel).toHaveTextContent("CompTIA Security+");
+    expect(panel).toHaveTextContent("CompTIA A+");
+    expect(panel).toHaveTextContent("CompTIA Network+");
+    expect(panel).toHaveTextContent("AWS Solutions Architect Associate (in progress)");
+    expect(panel).toHaveTextContent("3 HELD");
   });
 });
 

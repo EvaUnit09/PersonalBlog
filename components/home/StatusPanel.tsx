@@ -21,12 +21,11 @@ export function StatusPanel({ status }: StatusPanelProps) {
       <dl className={styles.readouts}>
         <ReadoutRow label="ROLE" value={status.role} />
         <ReadoutRow label="LOCATION" value={status.location} />
-        <ReadoutRow label="COORD" value={status.coordinates} />
         <ReadoutRow label="PREV" value={status.previous} />
       </dl>
       {status.isOpenToWork && (
         <p className={`t-readout ${styles.prompt}`}>
-          noah@astoria:~$ <span className={styles.available}>available</span>
+          noah@nyc:~$ <span className={styles.available}>available</span>
         </p>
       )}
     </Panel>

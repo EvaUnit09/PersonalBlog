@@ -6,7 +6,7 @@ export function SiteFooter() {
   return (
     <footer className={cx(styles.footer, "t-readout")}>
       <p className={styles.copyright}>
-        © {SITE.name} · {SITE.coordinates}
+        © {SITE.name} · {SITE.location}
       </p>
       <ul className={styles.links}>
         {CONTACT_LINKS.map((contact) => (

@@ -4,6 +4,7 @@ import { ProjectDetail } from "@/components/projects/ProjectDetail";
 import { getProjects } from "@/lib/content/projects";
 import { findBySlug } from "@/lib/find-by-slug";
 import { neighborsOf } from "@/lib/neighbors";
+import { pageMetadata } from "@/lib/page-metadata";
 import { slugParams } from "@/lib/static-params";
 
 export async function generateStaticParams() {
@@ -12,7 +13,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/projects/[slug]">): Promise<Metadata> {
   const project = findBySlug(await getProjects(), (await params).slug);
-  return { title: project.title, description: project.summary };
+  return pageMetadata(project.title, project.summary);
 }
 
 export default async function ProjectPage({ params }: PageProps<"/projects/[slug]">) {

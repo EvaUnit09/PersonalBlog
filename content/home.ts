@@ -20,13 +20,12 @@ export interface Status {
   isOpenToWork: boolean;
   role: string;
   location: string;
-  coordinates: string;
   previous: string;
 }
 
 export const HERO = {
   headline: "Backend engineer. Network nerd turned developer.",
-  lede: "Four years running Marine Corps network infrastructure in Okinawa, film school in Los Angeles, then software engineer at BBC Studios in New York. Building backend and full-stack systems.",
+  lede: "Five years running Marine Corps network infrastructure in Okinawa, film school in Los Angeles, then software engineer at BBC Studios in New York. Building backend and full-stack systems.",
 } as const satisfies Hero;
 
 // Location is "NYC, ET" because a fixed UTC offset is wrong half the year.
@@ -34,7 +33,6 @@ export const STATUS = {
   isOpenToWork: true,
   role: "BACKEND / FULL-STACK",
   location: "NYC, ET",
-  coordinates: "40.7644 / -73.9235",
   previous: "BBC STUDIOS NY",
 } as const satisfies Status;
 

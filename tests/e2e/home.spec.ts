@@ -47,6 +47,15 @@ test("status panel has no BUILD readout", async ({ page }) => {
   await expect(page.getByRole("complementary", { name: "Status" })).not.toContainText("BUILD");
 });
 
+test("status panel keeps location at city level with no GPS coordinates", async ({ page }) => {
+  await page.goto("/");
+  const status = page.getByRole("complementary", { name: "Status" });
+
+  await expect(status).toContainText("NYC, ET");
+  await expect(status).not.toContainText("COORD");
+  await expect(status).not.toContainText(/40\.76|-73\.92/);
+});
+
 test("panels stack in a single column below 900px", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "mobile", "mobile viewport only");
   await page.goto("/");

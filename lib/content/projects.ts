@@ -10,7 +10,7 @@ export interface Project extends ProjectFrontmatter {
   body: string;
 }
 
-/** Ordered by `order`; the first entry is the featured project. */
+/** Ordered by `order`. Featured cards pick slugs from this list; the first entry is order 1. */
 export type ProjectList = readonly [Project, ...Project[]];
 
 export function toProjectList(entries: readonly Entry<ProjectFrontmatter>[]): ProjectList {

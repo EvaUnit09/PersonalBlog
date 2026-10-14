@@ -77,6 +77,10 @@ test("project detail renders its parts and keeps Projects marked in the nav", as
   await expect(crumbs).toHaveText("◂ ALL PROJECTS · 02 / PROJECT 01 OF 04");
   await expect(page.getByRole("complementary", { name: "Project facts" })).toContainText("CURRENTLY BUILDING");
   await expect(page.getByRole("article", { name: "NightCap write-up" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "▸ Live demo" })).toHaveAttribute(
+    "href",
+    "https://nightcap-dusky.vercel.app",
+  );
 });
 
 test("project detail links only the existing neighbor at the ends of the list", async ({ page }) => {

@@ -20,7 +20,7 @@ export const projectFrontmatter = z.object({
   summary: z.string().min(1),
   tags: tagList,
   status: z.enum(PROJECT_STATUSES),
-  /** 1-based position: 1 is featured, and it drives "PROJECT 01 OF 04" and previous/next. */
+  /** 1-based position: drives "PROJECT 01 OF 04" and previous/next. Featured cards use this order. */
   order: z.number().int().positive(),
   updated: calendarDay.optional(),
   links: z.object({ demo: httpsUrl.optional(), source: httpsUrl.optional() }).default({}),

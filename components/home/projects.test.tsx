@@ -20,78 +20,100 @@ function project(slug: string, overrides: Partial<Project> = {}): Project {
 }
 
 const PROJECTS: ProjectList = [
-  project("alpha", { status: "in-progress" }),
-  project("beta"),
-  project("gamma"),
-  project("delta"),
+  project("alpha", { order: 1, status: "in-progress", links: { demo: "https://alpha.example" } }),
+  project("beta", { order: 2 }),
+  project("gamma", { order: 3, links: { demo: "https://gamma.example" } }),
+  project("delta", { order: 4 }),
 ];
 
-describe("FeaturedPanel", () => {
-  it("features the first project and links to its write-up", () => {
-    render(<FeaturedPanel projects={PROJECTS} />);
-    const panel = screen.getByRole("region", { name: "Title alpha" });
+const FEATURED = ["alpha", "gamma"] as const;
 
-    expect(within(panel).getByText("Summary alpha")).toBeInTheDocument();
+describe("FeaturedPanel", () => {
+  it("renders each featured project as its own card with the write-up link", () => {
+    render(<FeaturedPanel projects={PROJECTS} featuredSlugs={FEATURED} />);
+    const panel = screen.getByRole("region", { name: "Featured" });
+    const alpha = within(panel).getByRole("article", { name: "Title alpha" });
+    const gamma = within(panel).getByRole("article", { name: "Title gamma" });
+
+    expect(within(alpha).getByText("Summary alpha")).toBeInTheDocument();
+    expect(within(gamma).getByText("Summary gamma")).toBeInTheDocument();
     expect(within(panel).queryByText("Title beta")).not.toBeInTheDocument();
-    expect(within(panel).getByRole("link", { name: /Read the write-up/ })).toHaveAttribute(
+    expect(within(alpha).getByRole("link", { name: /Read the write-up/ })).toHaveAttribute(
       "href",
       "/projects/alpha",
     );
   });
 
-  it("derives the position readout from the project count", () => {
-    const { rerender } = render(<FeaturedPanel projects={PROJECTS} />);
-    expect(screen.getByText("PROJECT 01 OF 04")).toBeInTheDocument();
+  it("keeps each card's project counter on that card's own order", () => {
+    render(<FeaturedPanel projects={PROJECTS} featuredSlugs={FEATURED} />);
+    const alpha = screen.getByRole("article", { name: "Title alpha" });
+    const gamma = screen.getByRole("article", { name: "Title gamma" });
 
-    rerender(<FeaturedPanel projects={[PROJECTS[0], PROJECTS[1]]} />);
-    expect(screen.getByText("PROJECT 01 OF 02")).toBeInTheDocument();
+    expect(within(alpha).getByText("PROJECT 01 OF 04")).toBeInTheDocument();
+    expect(within(gamma).getByText("PROJECT 03 OF 04")).toBeInTheDocument();
+    expect(screen.getByText("02 FEATURED")).toBeInTheDocument();
   });
 
-  it("tags the featured project with its own stack", () => {
-    render(<FeaturedPanel projects={PROJECTS} />);
-    const stack = screen.getByRole("list", { name: "Stack" });
+  it("tags each featured project with its own stack", () => {
+    render(<FeaturedPanel projects={PROJECTS} featuredSlugs={FEATURED} />);
+    const alphaStack = screen.getByRole("list", { name: "Title alpha stack" });
+    const gammaStack = screen.getByRole("list", { name: "Title gamma stack" });
 
-    expect(within(stack).getByText("[Tag alpha]")).toBeInTheDocument();
-    expect(within(stack).queryByText("[Tag beta]")).not.toBeInTheDocument();
+    expect(within(alphaStack).getByText("[Tag alpha]")).toBeInTheDocument();
+    expect(within(alphaStack).queryByText("[Tag gamma]")).not.toBeInTheDocument();
+    expect(within(gammaStack).getByText("[Tag gamma]")).toBeInTheDocument();
   });
 
-  it("shows the featured project's status", () => {
-    render(<FeaturedPanel projects={PROJECTS} />);
+  it("shows each featured project's status", () => {
+    render(<FeaturedPanel projects={PROJECTS} featuredSlugs={FEATURED} />);
 
-    expect(screen.getByText("STATUS: CURRENTLY BUILDING")).toBeInTheDocument();
+    expect(within(screen.getByRole("article", { name: "Title alpha" })).getByText("STATUS: CURRENTLY BUILDING")).toBeInTheDocument();
+    expect(within(screen.getByRole("article", { name: "Title gamma" })).getByText("STATUS: SHIPPED")).toBeInTheDocument();
+  });
+
+  it("links a live demo when the project has one", () => {
+    render(<FeaturedPanel projects={PROJECTS} featuredSlugs={FEATURED} />);
+
+    expect(
+      within(screen.getByRole("article", { name: "Title alpha" })).getByRole("link", { name: /Live demo/ }),
+    ).toHaveAttribute("href", "https://alpha.example");
+    expect(
+      within(screen.getByRole("article", { name: "Title gamma" })).getByRole("link", { name: /Live demo/ }),
+    ).toHaveAttribute("href", "https://gamma.example");
   });
 
   it("has no screenshot placeholder", () => {
-    render(<FeaturedPanel projects={PROJECTS} />);
+    render(<FeaturedPanel projects={PROJECTS} featuredSlugs={FEATURED} />);
 
     expect(screen.queryByText(/SCREENSHOT/)).not.toBeInTheDocument();
   });
 });
 
 describe("AlsoBuiltPanel", () => {
-  it("lists every project except the featured one, indexed from 02", () => {
-    const { container } = render(<AlsoBuiltPanel projects={PROJECTS} />);
+  it("lists every project except featured ones, using each project's order", () => {
+    const { container } = render(<AlsoBuiltPanel projects={PROJECTS} featuredSlugs={FEATURED} />);
     const rows = container.querySelectorAll("ol > li");
 
-    expect(rows).toHaveLength(3);
+    expect(rows).toHaveLength(2);
     expect(rows[0]).toHaveTextContent("02");
     expect(rows[0]).toHaveTextContent("Title beta");
-    expect(rows[1]).toHaveTextContent("03");
-    expect(rows[2]).toHaveTextContent("04");
+    expect(rows[1]).toHaveTextContent("04");
+    expect(rows[1]).toHaveTextContent("Title delta");
     expect(screen.queryByText("Title alpha")).not.toBeInTheDocument();
+    expect(screen.queryByText("Title gamma")).not.toBeInTheDocument();
   });
 
   it("shows each row's own summary and tags", () => {
-    render(<AlsoBuiltPanel projects={PROJECTS} />);
+    render(<AlsoBuiltPanel projects={PROJECTS} featuredSlugs={FEATURED} />);
 
     expect(screen.getByText("Summary beta")).toBeInTheDocument();
     const betaStack = screen.getByRole("list", { name: "Title beta stack" });
     expect(within(betaStack).getByText("[Tag beta]")).toBeInTheDocument();
-    expect(within(betaStack).queryByText("[Tag gamma]")).not.toBeInTheDocument();
+    expect(within(betaStack).queryByText("[Tag delta]")).not.toBeInTheDocument();
   });
 
   it("links ALL to the projects index", () => {
-    render(<AlsoBuiltPanel projects={PROJECTS} />);
+    render(<AlsoBuiltPanel projects={PROJECTS} featuredSlugs={FEATURED} />);
 
     expect(screen.getByRole("link", { name: /ALL/ })).toHaveAttribute("href", "/projects");
   });

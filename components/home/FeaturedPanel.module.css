@@ -1,3 +1,26 @@
+.cards {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: var(--stroke-hair) solid var(--line);
+}
+
+.cards > li:first-child .card {
+  margin-top: var(--space-3);
+  padding-top: 0;
+  border-top: none;
+}
+
+.position {
+  margin: 0 0 var(--space-3);
+  color: var(--ink-faint);
+}
+
 .title {
   margin: var(--space-3) 0 0;
 }

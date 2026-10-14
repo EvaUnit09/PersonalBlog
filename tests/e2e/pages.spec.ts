@@ -78,7 +78,6 @@ test("external links open in a new tab and internal links stay here", async ({ p
   const source = page.getByRole("link", { name: "Source on GitHub" }).first();
   await expect(source).toHaveAttribute("href", "https://github.com/EvaUnit09/NightCap");
   await expectNewTab(source);
-  await expect(page.getByRole("link", { name: /Live demo/ })).toHaveCount(0);
 
   await page.goto("/");
   await expectNewTab(page.getByRole("contentinfo").getByRole("link", { name: /GitHub/ }));

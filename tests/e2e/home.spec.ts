@@ -3,7 +3,7 @@ import { expect, test } from "./fixtures";
 const PANEL_NAMES_IN_ORDER = [
   { role: "region", name: /Backend engineer/ },
   { role: "complementary", name: "Status" },
-  { role: "region", name: "NightCap" },
+  { role: "region", name: "Featured" },
   { role: "complementary", name: "More projects" },
   { role: "region", name: "Experience" },
   { role: "complementary", name: "Stack" },
@@ -69,6 +69,29 @@ test("panels stack in a single column below 900px", async ({ page }, testInfo) =
 
   expect(new Set(lefts).size).toBe(1);
   expect(new Set(widths).size).toBe(1);
+});
+
+test("featured shows NightCap and Moody with their own counters and live demos", async ({ page }) => {
+  await page.goto("/");
+  const featured = page.getByRole("region", { name: "Featured" });
+  const nightcap = featured.getByRole("article", { name: "NightCap" });
+  const moody = featured.getByRole("article", { name: "Moody" });
+
+  await expect(nightcap).toContainText("PROJECT 01 OF 04");
+  await expect(moody).toContainText("PROJECT 03 OF 04");
+  await expect(nightcap.getByRole("link", { name: /Live demo/ })).toHaveAttribute(
+    "href",
+    "https://nightcap-dusky.vercel.app",
+  );
+  await expect(moody.getByRole("link", { name: /Live demo/ })).toHaveAttribute(
+    "href",
+    "https://www.moodyalpha.app",
+  );
+  const alsoBuilt = page.getByRole("complementary", { name: "More projects" });
+  await expect(alsoBuilt).toContainText("Foodsy");
+  await expect(alsoBuilt).toContainText("The Round Up");
+  await expect(alsoBuilt).not.toContainText("NightCap");
+  await expect(alsoBuilt).not.toContainText("Moody");
 });
 
 test("panels sit side by side on desktop", async ({ page }, testInfo) => {

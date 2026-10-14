@@ -90,7 +90,14 @@ test("external links open in a new tab and internal links stay here", async ({ p
 
   await page.goto("/about");
   await expectNewTab(page.getByRole("region", { name: "Contact" }).getByRole("link", { name: "GitHub" }));
-  await expectNewTab(page.getByRole("region", { name: "Contact" }).getByRole("link", { name: /Email/ }));
+  await expect(page.getByRole("region", { name: "Contact" }).getByRole("link", { name: /Email/ })).not.toHaveAttribute(
+    "target",
+    "_blank",
+  );
+  await expect(page.getByRole("contentinfo").getByRole("link", { name: /Email/ })).not.toHaveAttribute(
+    "target",
+    "_blank",
+  );
 });
 
 test("project detail renders its parts and keeps Projects marked in the nav", async ({ page }) => {

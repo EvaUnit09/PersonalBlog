@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { cx } from "@/lib/cx";
-import { NEW_TAB_REL, isInternalHref } from "@/lib/external-href";
+import { NEW_TAB_REL, isExternalHref, isInternalHref } from "@/lib/external-href";
 import styles from "./Button.module.css";
 
 type ButtonVariant = "primary" | "secondary";
@@ -27,9 +27,9 @@ function isLinkAttrs(attrs: LinkAttrs | NativeAttrs): attrs is LinkAttrs {
 /**
  * Renders next/link for site-relative hrefs ("/log"), a plain <a> for everything
  * else (https:, mailto:, protocol-relative "//host"), or a native <button> when
- * no href is given. External hrefs always open in a new tab with
- * rel="noopener noreferrer". An explicit target="_blank" on an internal href
- * gets the same rel.
+ * no href is given. Off-site http(s) and protocol-relative hrefs open in a new
+ * tab with rel="noopener noreferrer". An explicit target="_blank" on any other
+ * href gets the same rel.
  */
 export function Button({ variant = "primary", className, children, ...attrs }: ButtonProps) {
   const shared = {
@@ -54,8 +54,17 @@ export function Button({ variant = "primary", className, children, ...attrs }: B
     );
   }
 
+  if (isExternalHref(attrs.href)) {
+    return (
+      <a {...attrs} target="_blank" rel={NEW_TAB_REL} data-external="true" {...shared}>
+        {children}
+      </a>
+    );
+  }
+
+  const rel = attrs.target === "_blank" ? NEW_TAB_REL : attrs.rel;
   return (
-    <a {...attrs} target="_blank" rel={NEW_TAB_REL} data-external="true" {...shared}>
+    <a {...attrs} rel={rel} {...shared}>
       {children}
     </a>
   );

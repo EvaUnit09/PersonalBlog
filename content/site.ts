@@ -15,7 +15,7 @@ export interface ContactLink {
 export const SITE = {
   name: "Noah Decaille",
   description:
-    "Backend engineer. Marine turned developer. Marine Corps networks, film school, then BBC Studios.",
+    "Backend engineer. Marine turned developer. USMC networks, film school, then BBC Studios.",
   location: "New York, NY",
 } as const;
 

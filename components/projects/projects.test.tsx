@@ -33,6 +33,7 @@ describe("ProjectsIndexPanel", () => {
     expect(panel).toHaveTextContent("02 TOTAL");
     expect(rows).toHaveLength(2);
     expect(within(rows[0]!).getByRole("link", { name: "Title alpha" })).toHaveAttribute("href", "/projects/alpha");
+    expect(within(rows[0]!).getByRole("link", { name: "Title alpha" })).not.toHaveAttribute("target", "_blank");
     expect(rows[0]).toHaveTextContent("01");
     expect(rows[1]).toHaveTextContent("02");
     expect(rows[0]).toHaveTextContent("STATUS: CURRENTLY BUILDING");
@@ -80,7 +81,11 @@ describe("ProjectDetail", () => {
     const hero = screen.getByRole("region", { name: "Title alpha" });
 
     expect(within(hero).getByRole("link", { name: "▸ Live demo" })).toHaveAttribute("href", "https://demo.dev/x");
+    expect(within(hero).getByRole("link", { name: "▸ Live demo" })).toHaveAttribute("target", "_blank");
+    expect(within(hero).getByRole("link", { name: "▸ Live demo" })).toHaveAttribute("rel", "noopener noreferrer");
     expect(within(hero).getByRole("link", { name: "Source on GitHub" })).toHaveAttribute("href", "https://github.com/x/y");
+    expect(within(hero).getByRole("link", { name: "Source on GitHub" })).toHaveAttribute("target", "_blank");
+    expect(within(hero).getByRole("link", { name: "Source on GitHub" })).toHaveAttribute("rel", "noopener noreferrer");
     expect(within(hero).getByRole("link", { name: "▸ Live demo" })).toHaveAttribute("data-variant", "primary");
 
     rerender(
@@ -110,7 +115,9 @@ describe("ProjectDetail", () => {
     const spec = screen.getByRole("complementary", { name: "Project facts" });
 
     expect(within(spec).getByRole("link", { name: "Title alpha live demo" })).toHaveAttribute("href", "https://demo.dev/x");
+    expect(within(spec).getByRole("link", { name: "Title alpha live demo" })).toHaveAttribute("target", "_blank");
     expect(within(spec).getByRole("link", { name: "Title alpha source" })).toHaveAttribute("href", "https://github.com/x/y");
+    expect(within(spec).getByRole("link", { name: "Title alpha source" })).toHaveAttribute("rel", "noopener noreferrer");
     expect(screen.getAllByRole("link", { name: "▸ Live demo" })).toHaveLength(1);
   });
 

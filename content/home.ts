@@ -24,7 +24,7 @@ export interface Status {
 }
 
 export const HERO = {
-  headline: "Backend engineer. Network nerd turned developer.",
+  headline: "Backend engineer. Marine turned developer.",
   lede: "Five years running Marine Corps network infrastructure in Okinawa, film school in Los Angeles, then software engineer at BBC Studios in New York. Building backend and full-stack systems.",
 } as const satisfies Hero;
 

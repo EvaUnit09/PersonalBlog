@@ -32,4 +32,17 @@ describe("Mdx", () => {
 
     expect(container).not.toHaveTextContent("Total: 2");
   });
+
+  it("opens external markdown links in a new tab and keeps internal ones here", async () => {
+    await renderMdx("[Demo](https://www.moodyalpha.app) and [write-up](/projects/moody).");
+
+    const demo = screen.getByRole("link", { name: "Demo" });
+    expect(demo).toHaveAttribute("href", "https://www.moodyalpha.app");
+    expect(demo).toHaveAttribute("target", "_blank");
+    expect(demo).toHaveAttribute("rel", "noopener noreferrer");
+
+    const writeUp = screen.getByRole("link", { name: "write-up" });
+    expect(writeUp).toHaveAttribute("href", "/projects/moody");
+    expect(writeUp).not.toHaveAttribute("target", "_blank");
+  });
 });

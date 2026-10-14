@@ -85,7 +85,10 @@ describe("ContactPanel", () => {
 
     expect(screen.getByRole("link", { name: "▸ Email me" })).toHaveAttribute("data-variant", "primary");
     expect(screen.getByRole("link", { name: "▸ Email me" })).toHaveAttribute("href", "mailto:a@b.dev");
+    expect(screen.getByRole("link", { name: "▸ Email me" })).not.toHaveAttribute("target", "_blank");
     expect(screen.getByRole("link", { name: "GitHub" })).toHaveAttribute("data-variant", "secondary");
+    expect(screen.getByRole("link", { name: "GitHub" })).toHaveAttribute("target", "_blank");
+    expect(screen.getByRole("link", { name: "GitHub" })).toHaveAttribute("rel", "noopener noreferrer");
   });
 
   it("puts the email action first regardless of link order", () => {

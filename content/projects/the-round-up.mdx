@@ -1,7 +1,7 @@
 ---
 title: "The Round Up"
-summary: "Hackathon project: a personalised daily email digest that surfaces unread BBC.com articles from each user's reading habits."
-tags: ["Hackathon", "Snowflake", "FastAPI", "Next.js"]
+summary: "Placed top 3 at BBC Datathon 2026: a personalised daily email digest that surfaces unread BBC.com articles from each user's reading habits."
+tags: ["Hackathon", "Snowflake", "FastAPI", "Next.js", "Llama 3.1"]
 status: shipped
 order: 4
 links:
@@ -10,9 +10,11 @@ links:
 spec:
   - { label: Type, value: Hackathon }
   - { label: Event, value: BBC Datathon 2026 }
+  - { label: Result, value: Top 3 }
   - { label: Data, value: Snowflake }
+  - { label: Model, value: Llama 3.1 }
 ---
 
-Hackathon project from BBC Datathon 2026. A personalised daily email digest that surfaces the articles each BBC.com user is most likely to engage with: unread pieces scored from that user's reading history, with no machine learning and no LLM for the subject line.
+Hackathon project from BBC Datathon 2026. Placed top 3 building a personalised daily email digest that surfaces the articles each BBC.com user is most likely to engage with: unread pieces scored from that user's reading history, using Llama 3.1.
 
-User affinity is a Snowflake table: the last 7 days of reads, broken into content pillars, stored as each pillar's share of total reads. FastAPI serves the digest. The Next.js frontend shows an email preview and an intelligence panel that explains why each article was chosen.
+User affinity is a Snowflake table: the 7 most recently read articles, broken into content pillars, stored as each pillar's share of total reads. FastAPI serves the digest. The Next.js frontend shows an email preview and an intelligence panel that explains why each article was chosen.

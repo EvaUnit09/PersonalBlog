@@ -19,16 +19,12 @@ export const metadata: Metadata = {
   },
   description: SITE.description,
   openGraph: {
-    title: SITE.name,
-    description: SITE.description,
     siteName: SITE.name,
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary",
-    title: SITE.name,
-    description: SITE.description,
   },
 };
 

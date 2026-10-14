@@ -16,7 +16,7 @@ export const SITE = {
   name: "Noah Decaille",
   description:
     "Backend engineer. Network nerd turned developer. Marine Corps networks, film school, then BBC Studios.",
-  coordinates: "40.7644 N / 73.9235 W",
+  location: "New York, NY",
 } as const;
 
 export const NAV_ITEMS = [

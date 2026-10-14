@@ -28,14 +28,13 @@ describe("HeroPanel", () => {
 });
 
 describe("StatusPanel", () => {
-  it("shows role, location, coordinates and previous employer", () => {
+  it("shows role, location and previous employer", () => {
     render(<StatusPanel status={STATUS} />);
 
     const pairs = screen.getAllByRole("term").map((term) => [term.textContent, term.nextElementSibling?.textContent]);
     expect(pairs).toEqual([
       ["ROLE", STATUS.role],
       ["LOCATION", STATUS.location],
-      ["COORD", STATUS.coordinates],
       ["PREV", STATUS.previous],
     ]);
   });

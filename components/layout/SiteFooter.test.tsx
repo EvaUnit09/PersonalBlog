@@ -4,10 +4,10 @@ import { CONTACT_LINKS } from "@/content/site";
 import { SiteFooter } from "./SiteFooter";
 
 describe("SiteFooter", () => {
-  it("shows the copyright readout with coordinates", () => {
+  it("shows the copyright readout with a city-level location", () => {
     render(<SiteFooter />);
 
-    expect(screen.getByRole("contentinfo")).toHaveTextContent(/© Noah Decaille · 40.7644 N \/ 73.9235 W/i);
+    expect(screen.getByRole("contentinfo")).toHaveTextContent(/© Noah Decaille · New York, NY/i);
   });
 
   it("links every contact channel", () => {

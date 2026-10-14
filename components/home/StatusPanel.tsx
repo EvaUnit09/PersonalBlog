@@ -21,7 +21,6 @@ export function StatusPanel({ status }: StatusPanelProps) {
       <dl className={styles.readouts}>
         <ReadoutRow label="ROLE" value={status.role} />
         <ReadoutRow label="LOCATION" value={status.location} />
-        <ReadoutRow label="COORD" value={status.coordinates} />
         <ReadoutRow label="PREV" value={status.previous} />
       </dl>
       {status.isOpenToWork && (

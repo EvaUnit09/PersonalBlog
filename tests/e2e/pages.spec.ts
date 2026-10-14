@@ -14,6 +14,13 @@ test("about renders its h1, labelled panels and the #contact anchor target", asy
   await expect(page.getByRole("complementary", { name: "Identity" })).toBeVisible();
   await expect(page.getByRole("region", { name: "Path" })).toBeVisible();
   await expect(page.getByRole("complementary", { name: "Stack" })).toBeVisible();
+  await expect(page.getByRole("region", { name: "Certifications" })).toBeVisible();
+  await expect(page.getByRole("region", { name: "Certifications" })).toContainText(
+    "CompTIA Security+, A+ and Network+",
+  );
+  await expect(page.getByRole("region", { name: "Certifications" })).toContainText(
+    "AWS Solutions Architect Associate (in progress)",
+  );
   await expect(page.getByRole("region", { name: "Contact" })).toHaveAttribute("id", "contact");
   await expect(primaryNav(page).getByRole("link", { name: /About/ })).toHaveAttribute("aria-current", "page");
 });
@@ -36,6 +43,26 @@ test("projects index lists every project in order and links to each", async ({ p
   const hrefs = await region.getByRole("link").evaluateAll((links) => links.map((a) => a.getAttribute("href")));
   expect(hrefs).toEqual(PROJECT_SLUGS.map((slug) => `/projects/${slug}`));
   await expect(primaryNav(page).getByRole("link", { name: /Projects/ })).toHaveAttribute("aria-current", "page");
+});
+
+test("The Round Up write-up matches the resume and README", async ({ page }) => {
+  await page.goto("/projects/the-round-up");
+  const article = page.getByRole("article", { name: "The Round Up write-up" });
+
+  await expect(article).toContainText("Llama 3.1");
+  await expect(article).toContainText("top 3");
+  await expect(article).toContainText("7 most recently read articles");
+  await expect(article).not.toContainText("no LLM");
+  await expect(page.getByRole("complementary", { name: "Project facts" })).toContainText("Top 3");
+});
+
+test("Moody live demo points at the production host", async ({ page }) => {
+  await page.goto("/projects/moody");
+
+  await expect(page.getByRole("link", { name: "▸ Live demo" })).toHaveAttribute(
+    "href",
+    "https://www.moodyalpha.app",
+  );
 });
 
 test("project detail renders its parts and keeps Projects marked in the nav", async ({ page }) => {

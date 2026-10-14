@@ -4,6 +4,7 @@ import { LogPostView } from "@/components/log/LogPostView";
 import { getPosts } from "@/lib/content/log";
 import { findBySlug } from "@/lib/find-by-slug";
 import { logNeighbors } from "@/lib/neighbors";
+import { pageMetadata } from "@/lib/page-metadata";
 import { slugParams } from "@/lib/static-params";
 
 export async function generateStaticParams() {
@@ -12,7 +13,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/log/[slug]">): Promise<Metadata> {
   const post = findBySlug(await getPosts(), (await params).slug);
-  return { title: post.title, description: post.excerpt };
+  return pageMetadata(post.title, post.excerpt);
 }
 
 export default async function LogPostPage({ params }: PageProps<"/log/[slug]">) {

@@ -73,13 +73,22 @@ describe("FeaturedPanel", () => {
 
   it("links a live demo when the project has one", () => {
     render(<FeaturedPanel projects={PROJECTS} featuredSlugs={FEATURED} />);
+    const alphaDemo = within(screen.getByRole("article", { name: "Title alpha" })).getByRole("link", {
+      name: /Live demo/,
+    });
+    const gammaDemo = within(screen.getByRole("article", { name: "Title gamma" })).getByRole("link", {
+      name: /Live demo/,
+    });
 
+    expect(alphaDemo).toHaveAttribute("href", "https://alpha.example");
+    expect(alphaDemo).toHaveAttribute("target", "_blank");
+    expect(alphaDemo).toHaveAttribute("rel", "noopener noreferrer");
+    expect(gammaDemo).toHaveAttribute("href", "https://gamma.example");
+    expect(gammaDemo).toHaveAttribute("target", "_blank");
+    expect(gammaDemo).toHaveAttribute("rel", "noopener noreferrer");
     expect(
-      within(screen.getByRole("article", { name: "Title alpha" })).getByRole("link", { name: /Live demo/ }),
-    ).toHaveAttribute("href", "https://alpha.example");
-    expect(
-      within(screen.getByRole("article", { name: "Title gamma" })).getByRole("link", { name: /Live demo/ }),
-    ).toHaveAttribute("href", "https://gamma.example");
+      within(screen.getByRole("article", { name: "Title alpha" })).getByRole("link", { name: /Read the write-up/ }),
+    ).not.toHaveAttribute("target", "_blank");
   });
 
   it("has no screenshot placeholder", () => {

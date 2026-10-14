@@ -78,7 +78,6 @@ test("external links open in a new tab and internal links stay here", async ({ p
   const source = page.getByRole("link", { name: "Source on GitHub" }).first();
   await expect(source).toHaveAttribute("href", "https://github.com/EvaUnit09/NightCap");
   await expectNewTab(source);
-  await expect(page.getByRole("link", { name: /Live demo/ })).toHaveCount(0);
 
   await page.goto("/");
   await expectNewTab(page.getByRole("contentinfo").getByRole("link", { name: /GitHub/ }));
@@ -104,10 +103,9 @@ test("project detail renders its parts and keeps Projects marked in the nav", as
   await expect(crumbs).toHaveText("◂ ALL PROJECTS · 02 / PROJECT 01 OF 04");
   await expect(page.getByRole("complementary", { name: "Project facts" })).toContainText("CURRENTLY BUILDING");
   await expect(page.getByRole("article", { name: "NightCap write-up" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "▸ Live demo" })).toHaveAttribute(
-    "href",
-    "https://nightcap-dusky.vercel.app",
-  );
+  const nightcapDemo = page.getByRole("link", { name: "▸ Live demo" }).first();
+  await expect(nightcapDemo).toHaveAttribute("href", "https://nightcap-dusky.vercel.app");
+  await expectNewTab(nightcapDemo);
 });
 
 test("project detail links only the existing neighbor at the ends of the list", async ({ page }) => {

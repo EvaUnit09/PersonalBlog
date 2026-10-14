@@ -1,4 +1,4 @@
-import { expect, test } from "./fixtures";
+import { expect, expectNewTab, test } from "./fixtures";
 
 const PANEL_NAMES_IN_ORDER = [
   { role: "region", name: /Backend engineer/ },
@@ -79,14 +79,14 @@ test("featured shows NightCap and Moody with their own counters and live demos",
 
   await expect(nightcap).toContainText("PROJECT 01 OF 04");
   await expect(moody).toContainText("PROJECT 03 OF 04");
-  await expect(nightcap.getByRole("link", { name: /Live demo/ })).toHaveAttribute(
-    "href",
-    "https://nightcap-dusky.vercel.app",
-  );
-  await expect(moody.getByRole("link", { name: /Live demo/ })).toHaveAttribute(
-    "href",
-    "https://www.moodyalpha.app",
-  );
+  const nightcapDemo = nightcap.getByRole("link", { name: /Live demo/ });
+  const moodyDemo = moody.getByRole("link", { name: /Live demo/ });
+  await expect(nightcapDemo).toHaveAttribute("href", "https://nightcap-dusky.vercel.app");
+  await expect(moodyDemo).toHaveAttribute("href", "https://www.moodyalpha.app");
+  await expectNewTab(nightcapDemo);
+  await expectNewTab(moodyDemo);
+  await expect(nightcap.getByRole("link", { name: /Read the write-up/ })).not.toHaveAttribute("target", "_blank");
+  await expect(moody.getByRole("link", { name: /Read the write-up/ })).not.toHaveAttribute("target", "_blank");
   const alsoBuilt = page.getByRole("complementary", { name: "More projects" });
   await expect(alsoBuilt).toContainText("Foodsy");
   await expect(alsoBuilt).toContainText("The Round Up");

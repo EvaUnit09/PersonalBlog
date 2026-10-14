@@ -57,7 +57,7 @@ describe("CertificationsPanel", () => {
     expect(within(panel).getAllByRole("listitem")).toHaveLength(ABOUT.certifications.length);
     expect(panel).toHaveTextContent("CompTIA Security+, A+ and Network+");
     expect(panel).toHaveTextContent("AWS Solutions Architect Associate (in progress)");
-    expect(panel).toHaveTextContent("02 HELD");
+    expect(panel).toHaveTextContent(`${ABOUT.certifications.length} HELD`);
   });
 });
 

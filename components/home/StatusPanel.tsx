@@ -25,7 +25,7 @@ export function StatusPanel({ status }: StatusPanelProps) {
       </dl>
       {status.isOpenToWork && (
         <p className={`t-readout ${styles.prompt}`}>
-          noah@astoria:~$ <span className={styles.available}>available</span>
+          noah@nyc:~$ <span className={styles.available}>available</span>
         </p>
       )}
     </Panel>

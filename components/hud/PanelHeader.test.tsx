@@ -4,11 +4,11 @@ import { PanelHeader } from "./PanelHeader";
 
 describe("PanelHeader", () => {
   it("renders the index, label and right-hand readout", () => {
-    render(<PanelHeader index="01" label="About" readout="NYC / ASTORIA" />);
+    render(<PanelHeader index="01" label="About" readout="NYC" />);
 
     expect(screen.getByText("01")).toBeInTheDocument();
     expect(screen.getByText("About")).toBeInTheDocument();
-    expect(screen.getByText("NYC / ASTORIA")).toBeInTheDocument();
+    expect(screen.getByText("NYC")).toBeInTheDocument();
   });
 
   it("puts labelId on the label so a panel can reference it", () => {

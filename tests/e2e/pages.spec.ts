@@ -1,4 +1,4 @@
-import { expect, test } from "./fixtures";
+import { expect, expectNewTab, test } from "./fixtures";
 
 const PROJECT_SLUGS = ["nightcap", "foodsy", "moody", "the-round-up"] as const;
 
@@ -60,11 +60,38 @@ test("The Round Up write-up matches the resume and README", async ({ page }) => 
 
 test("Moody live demo points at the production host", async ({ page }) => {
   await page.goto("/projects/moody");
+  const demo = page.getByRole("link", { name: "▸ Live demo" });
 
-  await expect(page.getByRole("link", { name: "▸ Live demo" })).toHaveAttribute(
-    "href",
-    "https://www.moodyalpha.app",
+  await expect(demo).toHaveAttribute("href", "https://www.moodyalpha.app");
+  await expectNewTab(demo);
+});
+
+test("external links open in a new tab and internal links stay here", async ({ page }) => {
+  await page.goto("/projects/moody");
+  await expectNewTab(page.getByRole("link", { name: "Source on GitHub" }).first());
+  await expect(page.getByRole("navigation", { name: "Breadcrumb" }).getByRole("link")).not.toHaveAttribute(
+    "target",
+    "_blank",
   );
+
+  await page.goto("/projects/nightcap");
+  const source = page.getByRole("link", { name: "Source on GitHub" }).first();
+  await expect(source).toHaveAttribute("href", "https://github.com/EvaUnit09/NightCap");
+  await expectNewTab(source);
+  await expect(page.getByRole("link", { name: /Live demo/ })).toHaveCount(0);
+
+  await page.goto("/");
+  await expectNewTab(page.getByRole("contentinfo").getByRole("link", { name: /GitHub/ }));
+  await expectNewTab(page.getByRole("contentinfo").getByRole("link", { name: /LinkedIn/ }));
+  await expect(page.getByRole("link", { name: /View projects/ })).not.toHaveAttribute("target", "_blank");
+  await expect(page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: /About/ })).not.toHaveAttribute(
+    "target",
+    "_blank",
+  );
+
+  await page.goto("/about");
+  await expectNewTab(page.getByRole("region", { name: "Contact" }).getByRole("link", { name: "GitHub" }));
+  await expectNewTab(page.getByRole("region", { name: "Contact" }).getByRole("link", { name: /Email/ }));
 });
 
 test("project detail renders its parts and keeps Projects marked in the nav", async ({ page }) => {
